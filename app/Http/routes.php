@@ -44,7 +44,7 @@ Route::get('san-pham',['as' => 'sanpham','uses' => 'PageController@category']);
 Route::get('dang-ky',['as' => 'dangky','uses' => 'PageController@getDangky']);
 Route::post('dang-ky',['as' => 'dangkypost','uses' => 'PageController@postDangky']);
 Route::get('dang-nhap',['as' => 'dangnhap','uses' => 'PageController@getDangnhap']);
-Route::post('dang-nhap',['as' => 'dangnhap','uses' => 'PageController@postDangnhap']);
+Route::post('dang-nhap',['as' => 'dangnhap','uses' => 'Auth\AuthController@postLogin']);
 Route::get('gio-hang',['as' => 'giohang','uses' => 'PageController@giohang']);
 Route::get('addtocart/{id}/{qty}',['as' => 'themvaogio','uses' => 'PageController@addtocart']);
 Route::get('huy-gio-hang',['as' => 'huygiohang','uses' => 'PageController@huygiohang']);

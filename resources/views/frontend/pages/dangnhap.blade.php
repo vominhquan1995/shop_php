@@ -20,6 +20,7 @@
         <div class="col-md-12 text-center">
           <div class="form-style form-login">
             <form accept-charset="UTF-8" action="" id="customer_register" method="post">
+              <input type="hidden" name="_token" value="{{ csrf_token() }}">
               <h3 class="form-heading">Đăng nhập tài khoản</h3>
               <p class="form-description">Nếu bạn chưa có tài khoản, xin vui lòng chuyển qua trang đăng ký.</p>
               <div class="row">

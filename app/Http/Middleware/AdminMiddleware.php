@@ -41,6 +41,9 @@ class AdminMiddleware {
 			}
 			else
 			{
+				if(Auth::User()->level != 1){
+					return redirect('/');
+				}
 				return redirect()->guest('auth/login');
 			}
 		}

@@ -67,7 +67,10 @@ class AuthController extends Controller {
 		];
 		//$checks = DB::table('users')->select('email','password')->where($auth)->first();
 		if($this->auth->attempt($auth)){
-			return redirect()->route('admin');
+			if(Auth::User()->level == 1){
+				return redirect()->route('admin');
+			}
+			return redirect('/');
 		}else{
 			echo "<pre>";
 				print_r($auth);

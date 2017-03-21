@@ -3,7 +3,7 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use DB,Hash,Mail,Cart;
+use DB,Hash,Mail,Cart,Auth;
 use App\Category;
 use App\Product;
 use App\ProductImage;
@@ -185,9 +185,14 @@ class PageController extends Controller {
 	}
     
     public function getDangnhap(){
+		if(Auth::User()){
+			return redirect('/');
+		}
 		return view('frontend.pages.dangnhap');
 	}
 	public function postDangnhap(){
-		
+
+	
+	
 	}
 }

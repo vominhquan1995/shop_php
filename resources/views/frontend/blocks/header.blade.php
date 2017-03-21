@@ -1,3 +1,4 @@
+
  <!-- header -->
  <div class="notifyjs-corner" style="top: 0px; right: 0px;">
   <div class="notifyjs-wrapper notifyjs-hidable">
@@ -17,8 +18,15 @@
               <div class="pull-right">
                 <nav class="header-top-nav">
                   <ul>
-                    <li><a href="{!! url('dang-ky') !!}"><i class="fa fa-user"></i> Đăng ký</a></li>
-                    <li><a href="{!! url('dang-nhap') !!}"><i class="fa fa-sign-out"></i>Đăng nhập</a></li>
+                    @if(Auth::User())
+                       
+                       <li><a href="{!! url('thong-tin') !!}"><i class="fa fa-user"></i> {!! Auth::User()->firstname !!}</a></li>
+                       <li><a href="{!! url('dang-xuat') !!}"><i class="fa fa-sign-out"></i>Đăng xuất</a></li>
+                    @else
+                      <li><a href="{!! url('dang-ky') !!}"><i class="fa fa-user"></i> Đăng ký</a></li>
+                      <li><a href="{!! url('dang-nhap') !!}"><i class="fa fa-sign-out"></i>Đăng nhập</a></li>
+                    @endif
+                   
                   </ul>
                 </nav>
               </div>
