@@ -42,7 +42,7 @@ Route::group(['prefix' =>'admin','middleware' => 'admin'],function(){
 Route::get('dang-xuat',['as' => 'dangxuat','uses' => 'Auth\AuthController@getLogout']);
 Route::get('san-pham',['as' => 'sanpham','uses' => 'PageController@category']);
 Route::get('dang-ky',['as' => 'dangky','uses' => 'PageController@getDangky']);
-Route::post('dang-ky',['as' => 'dangky','uses' => 'PageController@postDangky']);
+Route::post('dang-ky',['as' => 'dangkypost','uses' => 'PageController@postDangky']);
 Route::get('dang-nhap',['as' => 'dangnhap','uses' => 'PageController@getDangnhap']);
 Route::post('dang-nhap',['as' => 'dangnhap','uses' => 'PageController@postDangnhap']);
 Route::get('gio-hang',['as' => 'giohang','uses' => 'PageController@giohang']);

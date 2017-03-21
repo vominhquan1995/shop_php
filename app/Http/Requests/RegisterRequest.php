@@ -2,7 +2,7 @@
 
 use App\Http\Requests\Request;
 
-class RegisterReqeust extends Request {
+class RegisterRequest extends Request {
 
 	/**
 	 * Determine if the user is authorized to make this request.
@@ -22,9 +22,9 @@ class RegisterReqeust extends Request {
 	public function rules()
 	{
 		return [
-			'name' => 'required',
-			'email' => 'required|email|unique:users,email',
-			'password' => 'required'
+			//'fristname' => 'required',
+			//'email' => 'required|email|unique:users,email',
+			//'password' => 'required'
 		];
 	}
 	public function messages(){

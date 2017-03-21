@@ -3,7 +3,7 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use DB,Mail,Cart;
+use DB,Hash,Mail,Cart;
 use App\Category;
 use App\Product;
 use App\ProductImage;
@@ -11,8 +11,10 @@ use App\Danhgia;
 use App\Hoadon;
 use App\Chitiethoadon;
 use App\Contact;
+use App\User;
 use App\Http\Requests\CartRequest;
 use App\Http\Requests\DanhgiaRequest;
+use App\Http\Requests\RegisterRequest;
 
 class PageController extends Controller {
 	public function index(){
@@ -166,7 +168,19 @@ class PageController extends Controller {
 	public function getDangky(){
 		return view('frontend.pages.dangky');
 	}
-	public function postDangky(){
+	public function postDangky(RegisterRequest $request){
+		$thanhvien = new User;
+		$thanhvien->username = $request->input('username');
+		$thanhvien->email = $request->input('email');
+		$thanhvien->password = Hash::make($request->input('password'));
+		$thanhvien->firstname = $request->input('firstname');
+		$thanhvien->phone = $request->input('phone');
+		$thanhvien->address = $request->input('address');
+		$thanhvien->level = $request->input('level');
+		$thanhvien->remember_token = $request->input('_token');
+		$thanhvien->save();
+		//alert ("Đăng ký thành công");
+		return view('auth.login');
 		
 	}
     

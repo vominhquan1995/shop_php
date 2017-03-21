@@ -6,7 +6,7 @@ use Illuminate\Contracts\Auth\Registrar;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use App\Http\Requests;
 use App\Http\Requests\LoginRequest;
-use App\Http\Requests\RegisterReqeust;
+use App\Http\Requests\RegisterRequest;
 use Auth,DB,Hash;
 use App\User;
 use Session;
@@ -42,15 +42,19 @@ class AuthController extends Controller {
 	public function getRegister(){
 		return view('auth.register');
 	}
-	public function postRegister(RegisterReqeust $request){
+	public function postRegister(RegisterRequest $request){
 		$thanhvien = new User;
 		$thanhvien->username = $request->input('name');
 		$thanhvien->email = $request->input('email');
 		$thanhvien->password = Hash::make($request->input('password'));
+		$thanhvien->firstname = $request->input('firstname');
+		$thanhvien->phone = $request->input('phone');
+		$thanhvien->address = $request->input('address');
+		$thanhvien->level = $request->input('level');
 		$thanhvien->remember_token = $request->input('_token');
 		$thanhvien->save();
 		//alert ("Đăng ký thành công");
-		return view('auth.login');
+		return view('/');
 	}
 	public function getLogin(){
 		return view('auth.login');

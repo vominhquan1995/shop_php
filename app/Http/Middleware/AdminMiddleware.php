@@ -41,7 +41,7 @@ class AdminMiddleware {
 			}
 			else
 			{
-				return redirect()->guest('/');
+				return redirect()->guest('auth/login');
 			}
 		}
 
