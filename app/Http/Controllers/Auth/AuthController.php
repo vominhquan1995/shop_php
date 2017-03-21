@@ -57,6 +57,12 @@ class AuthController extends Controller {
 		return view('/');
 	}
 	public function getLogin(){
+		if(Auth::User()){
+			if(Auth::User()->level == 1){
+				return redirect()->route('admin');
+			}
+			return redirect('/');
+		}
 		return view('auth.login');
 	}
 	public function postLogin(LoginRequest $request){

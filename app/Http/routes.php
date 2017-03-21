@@ -2,8 +2,7 @@
 Route::get('/', ['as' =>'trangchu','uses' => 'PageController@index']);
 Route::get('home', 'HomeController@index');
 Route::controllers([
-	'auth' => 'Auth\AuthController',
-	'password' => 'Auth\PasswordController',
+	
 ]);
 Route::get('admin',['as' => 'admin','middleware' => 'admin','uses' => 'TrangchuContronller@index']);
 Route::group(['prefix' =>'admin','middleware' => 'admin'],function(){
@@ -56,10 +55,10 @@ Route::get('danh-gia',['as' => 'danhgia','uses' =>'PageController@danhgia']);
 Route::get('lien-he',['as' => 'lienhe','uses' =>'PageController@lienhe']);
 Route::post('lien-he',['as' => 'lienhe','uses' =>'PageController@postlienhe']);
 
-Route::get('administrator/login',['as' => 'administrator.login','uses' => 'Auth\AuthController@getLogin']);
-Route::post('administrator/login',['as' => 'administrator.login','uses' => 'Auth\AuthController@postLogin']);
-Route::get('administrator/register',['as' => 'administrator.register','uses' => 'Auth\AuthController@getRegister']);
-Route::post('administrator/register',['as' => 'administrator.register','uses' => 'Auth\AuthController@postRegister']);
+Route::get('auth/login',['as' => 'auth.login','uses' => 'Auth\AuthController@getLogin']);
+Route::post('auth/login',['as' => 'auth.login','uses' => 'Auth\AuthController@postLogin']);
+Route::get('auth/register',['as' => 'auth.register','middleware' => 'admin','uses' => 'Auth\AuthController@getRegister']);
+Route::post('auth/register',['as' => 'auth.register','middleware' => 'admin','uses' => 'Auth\AuthController@postRegister']);
 Route::get('{alias}',['as' => 'chitietsanpham','uses' => 'PageController@chitietsanpham']);
 Route::get('danh-muc/{alias}',['as' => 'cateparent','uses' => 'PageController@cateparent']);
 Route::any('{all?}','PageController@index')->where('all','(.*)');
