@@ -193,7 +193,7 @@
             <li>
              
               <li>
-                <a href="{!! url('/')!!}" target="new" class="icon-key">Log Out</a>
+                <a href="{!! url('/dang-xuat')!!}" target="new" class="icon-key">Log Out</a>
               </li>
             </li>
           </ul>

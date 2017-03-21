@@ -9,6 +9,7 @@ use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterReqeust;
 use Auth,DB,Hash;
 use App\User;
+use Session;
 class AuthController extends Controller {
 
 	/*
@@ -58,7 +59,7 @@ class AuthController extends Controller {
 		$auth = [
 			'username' => $request->input('username'),
 			'password' => $request->input('password'),
-			'level' => 1
+			
 		];
 		//$checks = DB::table('users')->select('email','password')->where($auth)->first();
 		if($this->auth->attempt($auth)){
@@ -69,4 +70,11 @@ class AuthController extends Controller {
 			echo "</pre>";
 		};
 	}
+
+	public function getLogout()
+    {
+        $this->auth->logout();
+        Session::flush();
+        return redirect('/');
+    }
 }

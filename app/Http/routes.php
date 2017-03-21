@@ -5,8 +5,8 @@ Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
-Route::get('admin',['as' => 'admin','middleware' => 'auth','uses' => 'TrangchuContronller@index']);
-Route::group(['prefix' =>'admin','middleware' => 'auth'],function(){
+Route::get('admin',['as' => 'admin','middleware' => 'admin','uses' => 'TrangchuContronller@index']);
+Route::group(['prefix' =>'admin','middleware' => 'admin'],function(){
 	Route::group(['prefix' => 'category'],function(){
 		Route::get('add',['as' => 'admin.category.getAdd','uses' => 'CategoryController@getAdd']);
 		Route::post('add',['as' => 'admin.category.postAdd','uses' => 'CategoryController@postAdd']);
@@ -39,6 +39,7 @@ Route::group(['prefix' =>'admin','middleware' => 'auth'],function(){
 		Route::get('update/{id}',['as' => 'admin.cart.getCapnhat','uses' => 'CartController@update']);
 	});
 });
+Route::get('dang-xuat',['as' => 'dangxuat','uses' => 'Auth\AuthController@getLogout']);
 Route::get('san-pham',['as' => 'sanpham','uses' => 'PageController@category']);
 Route::get('dang-ky',['as' => 'dangky','uses' => 'PageController@getDangky']);
 Route::post('dang-ky',['as' => 'dangky','uses' => 'PageController@postDangky']);
