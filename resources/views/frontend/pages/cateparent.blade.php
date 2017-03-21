@@ -6,7 +6,6 @@
 <section class="content-slide">
   <div class="container">
     <div class="row">
-      <div class="col-md-12">
         <ul class="breadcrumb">
           <li><a href="{!! asset('/') !!}">Trang chủ</a></li>
           <li class="active">{!! $namecate->name !!}</li>
@@ -20,45 +19,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-3 sidebar">
-        <div class="sb-block">
-          <div class="sb-block-title">
-            <h2>Danh mục sản phẩm</h2>
-          </div>
-          <div class="sb-block-content nav-category">
-            <ul>
-            @foreach ($categorys as $category)
-              <li><a href="{!! url('danh-muc',[$category->alias]) !!}">{!! $category->name !!}</a> 
-                <?php $parent = DB::table('categories')->select('id','name','alias','prarent_id')->where('prarent_id',$category->id)->orderBy('id','DESC')->get(); ?>
-                  @foreach($parent as $parents)
-                  <a href="{!! url('danh-muc',[$parents->alias]) !!}">&nbsp;&nbsp;&raquo; <?php echo $parents->name ?></a>
-                  @endforeach
-              </li>
-            @endforeach
-            </ul>
-          </div>
-        </div>
-        <div class="sb-block"> 
-        	<a href="#">
-        	<img class="img-responsive" src="{!! asset('public/images/banner_category_sidebar.png') !!}"></a> </div>
-        <!--<div class="sb-block">
-          <div class="sb-block-title">
-            <h2>Sản phẩm bán chạy</h2>
-          </div>
-          <div class="sb-block-content sb-products">
-            <ul>
-              @for ($i=0; $i < 5 ; $i++)
-              <li class="product-item-mini"> 
-              	<a href="{!! url('chi-tiet-san-pham') !!}" > 
-              		<img class="pim-image" src="{!! asset('public/images/van-hoc-teen-thoi-ao-trang--1-.jpg') !!}">
-	                <h3 class="pim-name">Nếu gặp người ấy</h3>
-	                <p class="pim-description"> Cả hai im lặng một lúc, tôi...</p>
-	                <p class="pim-price"> 65.000₫ <span> 86.000₫ </span> </p>
-                </a> 
-               </li>
-              @endfor
-            </ul>
-          </div>
-        </div>-->
+       @include('frontend.blocks.menu_left')
       </div>
       <div class="col-md-9 content-category">
         <div class="cc-products">

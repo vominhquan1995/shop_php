@@ -829,7 +829,9 @@ a:focus {
     color: #3c8dbc;
 }
 .breadcrumb {
-    margin: 15px 0 20px 0;
+    /*margin: 15px 0 20px 0;*/
+    margin-left: 4%;
+    margin-top: 5px;
     padding: 0;
 } 
 .breadcrumb>li+li:before {
@@ -1578,12 +1580,12 @@ a:focus {
 
 /*menu-left*/
 .glossymenu{
-margin: 5px;
+margin: 0px;
 width: 100%;
 border: 1px solid #9A9A9A;
 }
 .glossymenu a.menuitem{
-background: black url(public/images/glossyback.gif) repeat-x bottom left;
+background: blue repeat-x bottom left;
 font: bold 11px Arial, Helvetica, sans-serif;
 color: white;
 display: block;
@@ -1592,6 +1594,7 @@ width: auto;
 padding: 7px 0;
 padding-left: 10px;
 text-decoration: none;
+margin: 1px;
 }
 .glossymenu a.menuitem:visited, .glossymenu .menuitem:active{
 color: white;
@@ -1604,7 +1607,7 @@ border: none;
 }
 
 .glossymenu a.menuitem:hover{
-background-image: url(public/images/bgfooter.gif);
+background-color: red;
 }
 
 .glossymenu div.submenu{ /*DIV that contains each sub menu*/
