@@ -37,6 +37,11 @@ Route::group(['prefix' =>'admin','middleware' => 'admin'],function(){
 		Route::get('delete/{id}',['as' => 'admin.cart.getDelete','uses' => 'CartController@delete']);
 		Route::get('update/{id}',['as' => 'admin.cart.getCapnhat','uses' => 'CartController@update']);
 	});
+	Route::group(['prefix' => 'user'],function(){
+		Route::get('list',['as' => 'admin.user.getList','uses' => 'Auth\AuthController@getList']);
+		//Route::get('delete/{id}',['as' => 'admin.cart.getDelete','uses' => 'CartController@delete']);
+		//Route::get('update/{id}',['as' => 'admin.cart.getCapnhat','uses' => 'CartController@update']);
+	});
 });
 Route::get('dang-xuat',['as' => 'dangxuat','uses' => 'Auth\AuthController@getLogout']);
 Route::get('san-pham',['as' => 'sanpham','uses' => 'PageController@category']);

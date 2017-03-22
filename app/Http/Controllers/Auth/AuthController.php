@@ -90,4 +90,10 @@ class AuthController extends Controller {
         Session::flush();
         return redirect('/');
     }
+
+	public function getList(){
+		$dbUser = DB::table('users')->select('id','username','firstname','email','address','phone','level','created_at')->orderBy('id','DESC')->paginate(8);
+		return view('backend.user.list',compact('dbUser'));
+
+	}
 }

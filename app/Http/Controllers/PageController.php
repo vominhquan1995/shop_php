@@ -180,7 +180,7 @@ class PageController extends Controller {
 		$thanhvien->remember_token = $request->input('_token');
 		$thanhvien->save();
 		//alert ("Đăng ký thành công");
-		return view('auth.login');
+		return view('/');
 		
 	}
     
