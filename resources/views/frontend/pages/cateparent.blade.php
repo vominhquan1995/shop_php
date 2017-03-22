@@ -15,14 +15,15 @@
   </div>
 </section>
 <!-- end tiêu đề -->
-<section>
+<section class="">
   <div class="container">
-    <div class="row">
       <div class="col-md-3 sidebar">
        @include('frontend.blocks.menu_left')
       </div>
       <div class="col-md-9 content-category">
-        <div class="cc-products">
+         <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="sb-block-title"><h2>Danh Sách Sản Phẩm</h2></div>
+                <div class="cc-products">
           <div class="row">
           <!-- sản phẩm category -->
             @foreach ($products as $product)
@@ -30,25 +31,26 @@
               <div class="product-item-category" style="height: 420px;">
                 <div class="product-item-image"> <a href="{!! url('/'.$product->alias) !!}"> 
                 <img class="img-responsive" src="{!! asset('public/upload/'.$product->image) !!}"> </a> </div>
-                <a class="product-item-name" href="{!! url('/'.$product->alias) !!}">{!! substr($product->name,0,15); !!}</a>
-                 </br>
-                <div>
+                <a class="product-item-name" href="{!! url('/'.$product->alias) !!}">{!! substr($product->name,0,20); !!}</a>
+                    <br/>
+                  <div>
                   @if($product->pricesale > 0)
-                  <p class="product-item-price"> <?php echo number_format($product->pricesale,0,',','.') ?>đ<span class="product-item-price-sale"> <?php echo number_format($product->price,0,',','.') ?>đ </span> </p>
-                  </br>
+                    <p class="product-item-price"> <?php echo number_format($product->pricesale,0,',','.') ?>đ
+                    <span class="product-item-price-sale"> <?php echo number_format($product->price,0,',','.') ?>đ </span> </p>
+                    <br/>
                   @else
-                  <p class="product-item-price"><?php echo number_format($product->price,0,',','.') ?>đ </p>
-                   </br>
+                    <p class="product-item-price"><?php echo number_format($product->price,0,',','.') ?>đ </p>
+                    <br/>
                   @endif
-                  <a class="product-item-cart add_to_cart" href="javascript:void(0)" data-id="{!! $product->id !!}"><span></span>Thêm vào giỏ</a> </div>
+                    <a class="product-item-cart add_to_cart" href="javascript:void(0)" data-id="{!! $product->id !!}">
+                    <span></span>Thêm vào giỏ</a> </div>
               </div>
             </div>
             @endforeach
             <!-- end sản phẩm category -->
           </div>
-        </div>
-        <!-- phẩn trang -->
-        <div class="cc-toolbar">
+                <!-- phẩn trang -->
+                <div class="cc-toolbar">
           <div class="row">
             <div class="col-md-12">
               <nav class="pull-right">
@@ -57,10 +59,13 @@
               </nav>
             </div>
           </div>
-        </div>
-        <!-- end phân trang -->
+                </div>
+                <!-- end
+                </div>
+               phân trang -->
+          </div>
       </div>
-    </div>
   </div>
+</div>
 </section>
 @stop

@@ -44,8 +44,15 @@ class PageController extends Controller {
             ->join('products', 'categories.id', '=', 'products.cate_id')
             ->select('categories.alias','products.*')->where('categories.alias',$alias)->groupBy('categories.alias','products.alias')
             ->paginate(9);
+        $product_banchays = DB::table('chitiethoadons')
+            ->join('products', 'chitiethoadons.id_sanpham', '=', 'products.id')
+            ->join('hoadons', 'chitiethoadons.id_hoadon', '=', 'hoadons.id')
+            ->select('chitiethoadons.id_sanpham', 'products.*', 'hoadons.status')
+            ->where('hoadons.status',1)
+            ->groupBy('products.id','chitiethoadons.id_sanpham')
+            ->get();
 		$namecate = DB::table('categories')->select('id','name','alias','prarent_id')->where('alias',$alias)->first();
-		return view('frontend.pages.cateparent',compact('products','categorys','namecate'));
+		return view('frontend.pages.cateparent',compact('products','categorys','namecate','product_banchays'));
 	}
 	public function chitietsanpham($alias){
 		$product_banchays = DB::table('chitiethoadons')
