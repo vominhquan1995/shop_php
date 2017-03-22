@@ -31,18 +31,21 @@
           <div class="sb-block-title">
             <h2>Sản phẩm bán chạy</h2>
           </div>
-          <div class="sb-block-content sb-products">
+          <div class="sb-block-content sb-products" >
             <ul>
-              @for ($i=0; $i < 5 ; $i++)
-              <li class="product-item-mini"> 
-                <a href="{!! url('chi-tiet-san-pham') !!}" > 
-                  <img class="pim-image" src="{!! asset('public/images/van-hoc-teen-thoi-ao-trang--1-.jpg') !!}">
-                  <h3 class="pim-name">Nếu gặp người ấy</h3>
-                  <p class="pim-description"> Cả hai im lặng một lúc, tôi...</p>
-                  <p class="pim-price"> 65.000₫ <span> 86.000₫ </span> </p>
+              @foreach ($product_banchays as $product_banchay)
+              <div data-id="{!! $product_banchay->id !!}">
+                 <li class="product-item-mini" > 
+                <a href="{!! url('/'.$product_banchay->alias) !!}" > 
+                  <img class="pim-image"src="{!! asset('public/upload/'.$product_banchay->image) !!}">
+                  <h3 class="pim-name"  >{!! substr($product_banchay->name,0,15) !!}</h3>
+                  <p class="pim-description">{!! substr($product_banchay->intro,0,10) !!}</p>
+                  <p class="pim-price"><?php echo number_format($product_banchay->pricesale,0,',','.') ?>đ
+                    <span> <?php echo number_format($product_banchay->price,0,',','.') ?>đ  </span> </p>
                 </a> 
                </li>
-              @endfor
+              </div>         
+             @endforeach
             </ul>
           </div></div>
       </div>

@@ -1,5 +1,5 @@
 @extends('frontend.master')
-@section('title', 'Handmake - Handmake by me - tự tay làm những sản phẩm trang trí đẹp mắt')
+@section('title', 'Store What')
 @section('trangchu', 'active')
 @section('content')
 <!-- slide --- banner -->

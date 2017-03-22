@@ -12,14 +12,17 @@
                   <div class="product-item">
                     <div class="product-item-image"> <a href="{!! url('/'.$product_banchay->alias) !!}"> 
                     <img class="img-responsive" src="{!! asset('public/upload/'.$product_banchay->image) !!}" > </a> </div>
-                    <a class="product-item-name" href="{!! url('/'.$product_banchay->alias) !!}">{!! $product_banchay->name !!}</a>
+                    <a class="product-item-name" href="{!! url('/'.$product_banchay->alias) !!}">{!! substr($product_banchay->name,0,20) !!}</a>
                     <div>
                         @if($product_banchay->pricesale > 0)
-                        <p class="product-item-price"> <?php echo number_format($product_banchay->price,0,',','.') ?>đ<span class="product-item-price-sale"> <?php echo number_format($product_banchay->pricesale,0,',','.') ?>đ </span> </p>
+                        <p class="product-item-price"> <?php echo number_format($product_banchay->price,0,',','.') ?>đ</p>
+                        <span class="product-item-price-sale"> <?php echo number_format($product_banchay->pricesale,0,',','.') ?>đ </span> 
                         @else
                         <p class="product-item-price"><?php echo number_format($product_banchay->price,0,',','.') ?>đ </p>
+                        <br/>
                         @endif
-                      <a class="product-item-cart add_to_cart" href="javascript:void(0)" data-id="{!! $product_banchay->id !!}"><span></span>Thêm vào giỏ</a> </div>
+                      <a class="product-item-cart add_to_cart" href="javascript:void(0)" data-id="{!! $product_banchay->id !!}">
+                      <span></span>Thêm vào giỏ</a> </div>
                     @if($product_banchay->pricesale > 0)
                     <span class="product-item-sale"></span>
                     @endif

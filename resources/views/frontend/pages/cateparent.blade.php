@@ -30,12 +30,15 @@
               <div class="product-item-category" style="height: 420px;">
                 <div class="product-item-image"> <a href="{!! url('/'.$product->alias) !!}"> 
                 <img class="img-responsive" src="{!! asset('public/upload/'.$product->image) !!}"> </a> </div>
-                <a class="product-item-name" href="{!! url('/'.$product->alias) !!}">{!! $product->name !!}</a>
+                <a class="product-item-name" href="{!! url('/'.$product->alias) !!}">{!! substr($product->name,0,15); !!}</a>
+                 </br>
                 <div>
                   @if($product->pricesale > 0)
                   <p class="product-item-price"> <?php echo number_format($product->pricesale,0,',','.') ?>đ<span class="product-item-price-sale"> <?php echo number_format($product->price,0,',','.') ?>đ </span> </p>
+                  </br>
                   @else
                   <p class="product-item-price"><?php echo number_format($product->price,0,',','.') ?>đ </p>
+                   </br>
                   @endif
                   <a class="product-item-cart add_to_cart" href="javascript:void(0)" data-id="{!! $product->id !!}"><span></span>Thêm vào giỏ</a> </div>
               </div>

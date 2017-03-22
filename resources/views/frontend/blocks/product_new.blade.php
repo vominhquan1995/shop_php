@@ -13,18 +13,22 @@
                   <div class="product-item">
                     <div class="product-item-image"> <a href="{!! url('/'.$product_new->alias) !!}"> 
                     <img class="img-responsive" src="{!! asset('public/upload/'.$product_new->image) !!}" > </a> </div>
-                    <a class="product-item-name" href="{!! url('/'.$product_new->alias) !!}">{!! $product_new->name !!}</a>
-                    <div>
+                    <a class="product-item-name" href="{!! url('/'.$product_new->alias) !!}">{!! substr($product_new->name,0,20); !!}</a>
+                    <div >
                         @if($product_new->pricesale > 0)
-                        <p class="product-item-price"> <?php echo number_format($product_new->price,0,',','.') ?>đ<span class="product-item-price-sale"> <?php echo number_format($product_new->pricesale,0,',','.') ?>đ </span> </p>
+                        <p class="product-item-price"> <?php echo number_format($product_new->price,0,',','.') ?>đ</p>
+                        <span class="product-item-price-sale"> <?php echo number_format($product_new->pricesale,0,',','.') ?>đ </span> 
                         @else
                         <p class="product-item-price"><?php echo number_format($product_new->price,0,',','.') ?>đ </p>
+                        <span class="product-item-price-sale"></span>
+                        <br/>
                         @endif
-                      <a class="product-item-cart add_to_cart" href="javascript:void(0)" data-id="{!! $product_new->id !!}"><span></span>Thêm vào giỏ</a> </div>
+                      <a class="product-item-cart add_to_cart" href="javascript:void(0)" data-id="{!! $product_new->id !!}"><span></span>Thêm vào giỏ</a> 
+                    </div>
                     @if($product_new->pricesale > 0)
                     <span class="product-item-sale"></span>
                     @endif
-                </div>
+                  </div>
                 </div>
               </div>
              <!-- end sản phẩm -->
