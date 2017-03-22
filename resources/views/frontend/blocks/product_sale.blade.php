@@ -1,6 +1,5 @@
 
-  <div class="container">
-      <div class="col-md-9 col-sm-12 col-xs-12">
+      <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="block">
           <h2 class="block-title">Sản phẩm giảm giá</h2>
           <div class="block-content">
@@ -29,4 +28,3 @@
           </div>
         </div>
       </div>
-  </div>

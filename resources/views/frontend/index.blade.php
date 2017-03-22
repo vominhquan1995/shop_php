@@ -23,7 +23,6 @@
         @include('frontend.blocks.product_sale')
         <!-- end sản phẩm khuyến mại-->
         <!-- sản phẩm nổi bật -->
-        @include('frontend.blocks.banchay')
       </div>
     </div>
   </div>

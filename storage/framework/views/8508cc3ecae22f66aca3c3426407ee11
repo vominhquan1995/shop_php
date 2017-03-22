@@ -1,0 +1,66 @@
+<?php $__env->startSection('sanpham', 'active'); ?>
+<?php $__env->startSection('title','Danh mục sách các loại'); ?>
+<?php $__env->startSection('content'); ?>
+<!-- hien tiêu đề -->
+<section class="content-slide">
+  <div class="container">
+    <div class="row">
+        <ul class="breadcrumb">
+          <li><a href="<?php echo asset('/'); ?>">Trang chủ</a></li>
+          <li class="active"><?php echo $namecate->name; ?></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- end tiêu đề -->
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3 sidebar">
+       <?php echo $__env->make('frontend.blocks.menu_left', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+      </div>
+      <div class="col-md-9 content-category">
+        <div class="cc-products">
+          <div class="row">
+          <!-- sản phẩm category -->
+            <?php foreach($products as $product): ?>
+            <div class="col-md-4 col-sm-6 ">
+              <div class="product-item-category" style="height: 420px;">
+                <div class="product-item-image"> <a href="<?php echo url('/'.$product->alias); ?>"> 
+                <img class="img-responsive" src="<?php echo asset('public/upload/'.$product->image); ?>"> </a> </div>
+                <a class="product-item-name" href="<?php echo url('/'.$product->alias); ?>"><?php echo substr($product->name,0,15);; ?></a>
+                 </br>
+                <div>
+                  <?php if($product->pricesale > 0): ?>
+                  <p class="product-item-price"> <?php echo number_format($product->pricesale,0,',','.') ?>đ<span class="product-item-price-sale"> <?php echo number_format($product->price,0,',','.') ?>đ </span> </p>
+                  </br>
+                  <?php else: ?>
+                  <p class="product-item-price"><?php echo number_format($product->price,0,',','.') ?>đ </p>
+                   </br>
+                  <?php endif; ?>
+                  <a class="product-item-cart add_to_cart" href="javascript:void(0)" data-id="<?php echo $product->id; ?>"><span></span>Thêm vào giỏ</a> </div>
+              </div>
+            </div>
+            <?php endforeach; ?>
+            <!-- end sản phẩm category -->
+          </div>
+        </div>
+        <!-- phẩn trang -->
+        <div class="cc-toolbar">
+          <div class="row">
+            <div class="col-md-12">
+              <nav class="pull-right">
+                <?php $products->setPath('ky-nang'); ?>
+                <?php echo $products->render(); ?>
+              </nav>
+            </div>
+          </div>
+        </div>
+        <!-- end phân trang -->
+      </div>
+    </div>
+  </div>
+</section>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('frontend.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

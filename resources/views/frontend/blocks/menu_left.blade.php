@@ -1,4 +1,5 @@
-  <div class="container">
+  <section class="section section-hot-new">
+    <div class="container">
       <div class="col-md-3 sidebar">
         <div class="sb-block">
           <div class="sb-block-title">
@@ -50,6 +51,8 @@
           </div></div>
       </div>
   </div>
+  </section>
+  
   <script type="text/javascript">
 ddaccordion.init({
   headerclass: "submenuheader", //Shared CSS class name of headers group
@@ -61,7 +64,7 @@ ddaccordion.init({
   animatedefault: false, //Should contents open by default be animated into view?
   persiststate: true, //persist state of opened contents within browser session?
   toggleclass: ["", ""], //Two CSS classes to be applied to the header when it's collapsed and expanded, respectively ["class1", "class2"]
-  togglehtml: ["suffix", "<img src='{{ url('public/images/plus.gif') }}' class='statusicon' />", "<img src='{{ url('public/images/minus.gif') }}' class='statusicon' />"], //Additional HTML added to the header when it's collapsed and expanded, respectively  ["position", "html1", "html2"] (see docs)
+  togglehtml: ["suffix", "<img src='{{ url('public/images/plus.png') }}' class='statusicon' />", "<img src='{{ url('public/images/minus.png') }}' class='statusicon' />"], //Additional HTML added to the header when it's collapsed and expanded, respectively  ["position", "html1", "html2"] (see docs)
   animatespeed: "normal", //speed of animation: "fast", "normal", or "slow"
   oninit:function(headers, expandedindices){ //custom code to run when headers have initalized
     //do nothing
