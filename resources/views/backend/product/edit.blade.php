@@ -14,14 +14,22 @@
                 <!-- form start -->
                 <input type="hidden" name="_token" value="{!! csrf_token() !!}" />
                   <div class="box-body">
-                    <div class="form-group">
+                        <div class="form-group">
                         <label for="exampleInputEmail1" class="col-md-2">Danh mục</label>
-                        <div class="col-md-10"> 
-                            <select class="form-control" name="parentid">
+                              <div class="col-md-10"> 
+                            <select class="form-control" id="list_cate"  >
                               <option>Mời bạn chọn</option>
-                              <?php cate_parent($category,0,"--",$product["cate_id"]); ?>
+                              <?php cate_parent($category); ?>
                             </select>
                         </div>
+                      </div>
+                        <div class="form-group"  hidden="true" id="div_list">
+                            <label for="exampleInputEmail1" class="col-md-2">Loại sản phẩm</label>
+                            <div class="col-md-10"> 
+                                <select class="form-control" name="parentid"  id="parentId">
+                                         
+                                </select>
+                            </div>
                       </div>
                       <div class="form-group">
                         <label for="txtten" class="col-md-2">Tên sản phẩm</label>
