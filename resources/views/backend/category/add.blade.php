@@ -29,11 +29,11 @@
                             </select>
                         </div>
                       </div>
-                         <div class="form-group"  hidden="true" id="div_list">
+                      <div class="form-group"  hidden="true" id="div_list">
                             <label for="exampleInputEmail1" class="col-md-2">Loại sản phẩm</label>
                             <div class="col-md-8"> 
-                                <select class="form-control" name="parentId"  id="parentId">
-                                          <option value="0" hidden="true"></option>  
+                                <select class="form-control"  id="parentId">
+                                          <option value="0" hidden="true"></option>
                                 </select>
                             </div>
                       </div>
@@ -83,26 +83,6 @@
             </div><!--/.col (left) -->
             <!-- right column -->
           </div>   <!-- /.row -->
-          
-
+  
         </section>
-    <script>
-      $('#list_cate').on('change',function(e){
-        var type_id=e.target.value;
-        if(type_id != 0 && type_id != -1)
-        {
-           $('#div_list').show();          
-                $.get('/shop/list-cate?id='+type_id,function(data){
-                    console.log(data);
-                    $('#parentId').empty();
-                    $.each(data,function(index,object){
-                        $('#parentId').append('<option style="width=100%;" value='+ object.id+'>'+object.name+'</option>'); 
-                    })
-                });
-            }else{
-             $('#div_list').hide();
-        }
-         });
-
-  </script>
 @stop
