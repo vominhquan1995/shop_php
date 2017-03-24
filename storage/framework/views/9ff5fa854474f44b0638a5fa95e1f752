@@ -1,0 +1,56 @@
+<?php $__env->startSection('title','Đăng ký thành viên'); ?>
+<?php $__env->startSection('content'); ?>
+<div id="content">
+  <section class="">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <ul class="breadcrumb">
+            <li><a href="<?php echo url('/'); ?>">Trang chủ</a></li>
+            <li class="active">Đăng nhập</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <div class="form-style form-login">
+            <form accept-charset="UTF-8" action="" id="customer_register" method="post">
+              <input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>">
+              <h3 class="form-heading">Đăng nhập tài khoản</h3>
+              <p class="form-description">Nếu bạn chưa có tài khoản, xin vui lòng chuyển qua trang đăng ký.</p>
+              <div class="row">
+                <div class="col-md-3">
+                  <p class="text-right">Username <span>*</span></p>
+                </div>
+                <div class="col-md-8">
+                  <input type="text" value="<?php echo old('username'); ?>" name="username">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-3">
+                  <p class="text-right">Mật khẩu <span>*</span></p>
+                </div>
+                <div class="col-md-8">
+                  <input type="password" value="<?php echo old('password'); ?>" name="password">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-3"> </div>
+                <div class="col-md-8">
+                  <p><a href="<?php echo url('dang-ky'); ?>">Đăng ký</a></p>
+                  <button class="comment-submit">Đăng nhập</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('frontend.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
