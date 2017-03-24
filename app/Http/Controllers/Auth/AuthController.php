@@ -44,7 +44,7 @@ class AuthController extends Controller {
 	}
 	public function postRegister(RegisterRequest $request){
 		$thanhvien = new User;
-		$thanhvien->username = $request->input('name');
+		$thanhvien->username = $request->input('username');
 		$thanhvien->email = $request->input('email');
 		$thanhvien->password = Hash::make($request->input('password'));
 		$thanhvien->firstname = $request->input('firstname');
@@ -54,7 +54,9 @@ class AuthController extends Controller {
 		$thanhvien->remember_token = $request->input('_token');
 		$thanhvien->save();
 		//alert ("Đăng ký thành công");
-		return view('/');
+		
+		$dbUser = DB::table('users')->select('id','username','firstname','email','address','phone','level','created_at')->orderBy('id','DESC')->paginate(8);
+		return view('backend.user.list',compact('dbUser'));
 	}
 	public function getLogin(){
 		if(Auth::User()){
