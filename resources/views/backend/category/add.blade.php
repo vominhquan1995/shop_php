@@ -27,16 +27,7 @@
                               <option value="0">----Danh mục mới----</option>
                               <?php cate_parent($data); ?>
                             </select>
-                        </div>
-                      </div>
-                         <div class="form-group"  hidden="true" id="div_list">
-                            <label for="exampleInputEmail1" class="col-md-2">Loại sản phẩm</label>
-                            <div class="col-md-8"> 
-                                <select class="form-control"  id="parentId">
-                                         
-                                </select>
-                            </div>
-                      </div>
+                        </div>                      
                       <div class="form-group">
                         <label for="exampleInputEmail1" class="col-md-2">Tiêu đề</label>
                         <div class="col-md-8"> 
