@@ -1,15 +1,21 @@
 <?php
+use App\Category;
 Route::get('/', ['as' =>'trangchu','uses' => 'PageController@index']);
 Route::get('home', 'HomeController@index');
-Route::controllers([
-	
+Route::controllers([	
 ]);
+Route::get('/list-cate',function(){
+	$id=Input::get('id');
+	$listCate=Category::where('prarent_id','=',$id)->get();
+	return Response::json($listCate);
+});
 Route::get('admin',['as' => 'admin','middleware' => 'admin','uses' => 'TrangchuContronller@index']);
 Route::group(['prefix' =>'admin','middleware' => 'admin'],function(){
 	Route::group(['prefix' => 'category'],function(){
 		Route::get('add',['as' => 'admin.category.getAdd','uses' => 'CategoryController@getAdd']);
 		Route::post('add',['as' => 'admin.category.postAdd','uses' => 'CategoryController@postAdd']);
 		Route::get('list',['as' => 'admin.category.getList','uses' => 'CategoryController@getList']);
+		Route::get('editparent/{id}',['as' => 'admin.category.getEditParent','uses' => 'CategoryController@getEditParent']);
 		Route::get('delete/{id}',['as' => 'admin.category.getDelete','uses' => 'CategoryController@getDelete']);
 		Route::get('edit/{id}',['as' => 'admin.category.getEdit ','uses' => 'CategoryController@getEdit']);
 		Route::post('edit/{id}',['as' => 'admin.category.postEdit','uses' => 'CategoryController@postEdit']);
@@ -73,7 +79,6 @@ Route::post('auth/register',['as' => 'auth.register','middleware' => 'admin','us
 Route::get('{alias}',['as' => 'chitietsanpham','uses' => 'PageController@chitietsanpham']);
 Route::get('danh-muc/{alias}',['as' => 'cateparent','uses' => 'PageController@cateparent']);
 Route::any('{all?}','PageController@index')->where('all','(.*)');
-
 
 /*
   get date

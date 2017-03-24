@@ -43,33 +43,13 @@ function cate_parent($data,$parent=0,$select=0){
         {
             if($select != 0 && $id == $select)
             {
-                
+               echo "<option value='$id' selected >$name</option>"; 
             }
             else
             {
-                echo "<option value='$id'>$name</option>";
+                echo "<option value='$id' >$name</option>";
             }
             //cate_parent($data,$id,$str."--",$select);
-        }  
-  }
-}
-function list_type($data){
-  foreach ($data as $val) 
-  {
-        $id = $val["id"];
-        $name = $val["name"];
-        $nameparent=null;
-        $prarent_id = $val["prarent_id"];
-        if( $prarent_id != 0)         
-        {    
-            foreach ($data as $getname)
-            {
-              if($prarent_id == $getname["id"])
-              {
-                $nameparent=$getname["name"];
-              }
-            }            
-            echo "<option value='$id'>$nameparent-$name</option>";           
         }  
   }
 }

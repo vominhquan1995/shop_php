@@ -24,9 +24,10 @@ class CategoryController extends Controller {
 		return redirect()->route('admin.category.getList')->with(['flash_level' => 'success','flash_message' => 'Thêm danh mục thành công !!']);;
 	}
 	public function getList(){
-		$listCate = DB::table('categories')->select('id','name','order','prarent_id','keyworks','discription')->orderBy('id','DESC')->paginate(10);
+		$listCate = DB::table('categories')->select('id','name','order','prarent_id','keyworks','discription')->where('prarent_id','!=',0)->orderBy('id','DESC')->paginate(10);
+		$listCateParent =DB::table('categories')->select('id','name','order','prarent_id','keyworks','discription')->where('prarent_id','=',0)->orderBy('id','DESC')->paginate(10);
 		//$listCate = Category::select("*")->orderBy('id','DESC')->get()->toArray();
-		return view('backend.category.list',compact('listCate'));
+		return view('backend.category.list',compact('listCate','listCateParent'));
 	}
 	public function getDelete($id){
 		$parent = Category::where('prarent_id',$id)->count();
@@ -43,10 +44,15 @@ class CategoryController extends Controller {
 		$parent = Category::select('id','name','prarent_id')->get()->toArray();
 		return view('backend.category.edit',compact('parent','data'));
 	}
+	public function getEditParent($id){
+		$data = Category::findOrFail($id)->toArray();
+		$parent = Category::select('id','name','prarent_id')->get()->toArray();
+		return view('backend.category.editparent',compact('parent','data'));
+	}
 	public function postEdit(Request $request,$id){
 		$this->validate($request,
 			["txtTieude" => "required"],
-			["txtTieude.required" => "Tên danh mục kgoonf được bỏ trống"]
+			["txtTieude.required" => "Tên danh mục không được bỏ trống"]
 		);
 		$category = Category::find($id);
 		$category->name = $request->txtTieude;

@@ -14,14 +14,22 @@
                 <form role="form" class="form-horizontal" method="post" action="">
                 <input type="hidden" name="_token" value="{!! csrf_token() !!}" />
                   <div class="box-body">
-                    <div class="form-group">
+                      <div class="form-group">
                         <label for="exampleInputEmail1" class="col-md-2">Danh mục</label>
                         <div class="col-md-8"> 
-                            <select class="form-control" name="parentId">
-                              <option value="0">Mời bạn chọn</option>
-                              <?php cate_parent($parent,0,"--",$data["prarent_id"]); ?>
+                            <select class="form-control" id="list_cate" >                           
+                              <?php cate_parent($parent,0,$data["prarent_id"]); ?>
                             </select>
                         </div>
+                      </div>
+                      <div class="form-group"  id="div_list">
+                            <label for="exampleInputEmail1" class="col-md-2">Loại sản phẩm</label>
+                            <div class="col-md-8"> 
+                                <select class="form-control"  name="parentId"  id="parentId">
+                                          <option value="0" hidden="true"></option>  
+                                          <?php cate_parent($parent,$data["prarent_id"]); ?>
+                                </select>
+                            </div>
                       </div>
                       <div class="form-group">
                         <label for="exampleInputEmail1" class="col-md-2">Tiêu đề</label>
@@ -69,7 +77,6 @@
             </div><!--/.col (left) -->
             <!-- right column -->
           </div>   <!-- /.row -->
-          
 
         </section>
     

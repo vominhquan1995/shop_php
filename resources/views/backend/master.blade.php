@@ -235,7 +235,7 @@
               </a>
               <ul class="treeview-menu">
                 <li class="@yield('them_dm')"><a href="{!! url('admin/category/add') !!}"><i class="fa fa-circle-o"></i> Thêm danh mục</a></li>
-                <li class="@yield('list_dm')"><a href="{!! url('admin/category/list') !!}"><i class="fa fa-circle-o"></i> Danh sách danh mục</a></li>
+                <li class="@yield('list_dm')"><a href="{!! url('admin/category/list') !!}"><i class="fa fa-circle-o"></i> Danh mục cấp</a></li>
               </ul>
             </li>
 
@@ -333,7 +333,8 @@
 <script src="{{ url('public/backend/js/moment-with-locales.js') }}"></script>
 <script src="{{ url('public/backend/js/bootstrap-datetimepicker.js') }}"></script>
 <script src="{{ url('public/backend/js/bootstrap.min.js') }}"></script>
-
+<!-- add by Quan -->
+<script src="{{ url('public/backend/js/category.js') }}"></script>
 
   </body>
 </html>
