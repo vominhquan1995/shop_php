@@ -1,9 +1,14 @@
 <?php
+use App\Category;
 Route::get('/', ['as' =>'trangchu','uses' => 'PageController@index']);
 Route::get('home', 'HomeController@index');
-Route::controllers([
-	
+Route::controllers([	
 ]);
+Route::get('/list-cate',function(){
+	$id=Input::get('id');
+	$listCate=Category::where('prarent_id','=',$id)->get();
+	return Response::json($listCate);
+});
 Route::get('admin',['as' => 'admin','middleware' => 'admin','uses' => 'TrangchuContronller@index']);
 Route::group(['prefix' =>'admin','middleware' => 'admin'],function(){
 	Route::group(['prefix' => 'category'],function(){
@@ -67,7 +72,6 @@ Route::post('auth/register',['as' => 'auth.register','middleware' => 'admin','us
 Route::get('{alias}',['as' => 'chitietsanpham','uses' => 'PageController@chitietsanpham']);
 Route::get('danh-muc/{alias}',['as' => 'cateparent','uses' => 'PageController@cateparent']);
 Route::any('{all?}','PageController@index')->where('all','(.*)');
-
 
 /*
   get date

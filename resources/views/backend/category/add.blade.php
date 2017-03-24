@@ -22,21 +22,20 @@
                     <div class="form-group">
                         <label for="exampleInputEmail1" class="col-md-2">Danh mục</label>
                         <div class="col-md-8"> 
-                            <select class="form-control" name="parentId" id="parentId" onChange="changeID(this)">
+                            <select class="form-control"  id="list_cate" >
                               <option value="-1">Mời bạn chọn</option>
                               <option value="0">----Danh mục mới----</option>
                               <?php cate_parent($data); ?>
                             </select>
                         </div>
                       </div>
-                         <div class="form-group" hidden="true" id="type_cate">
-                        <label for="exampleInputEmail1" class="col-md-2">Loại sản phẩm</label>
-                        <div class="col-md-8"> 
-                            <select class="form-control" name="parentId" id="type_list">
-                              <option value="0">Mời bạn chọn</option> 
-                              <?php list_type($data); ?>                     
-                            </select>
-                        </div>
+                         <div class="form-group"  hidden="true" id="div_list">
+                            <label for="exampleInputEmail1" class="col-md-2">Loại sản phẩm</label>
+                            <div class="col-md-8"> 
+                                <select class="form-control" name="parentId"  id="parentId">
+                                          <option value="0" hidden="true"></option>  
+                                </select>
+                            </div>
                       </div>
                       <div class="form-group">
                         <label for="exampleInputEmail1" class="col-md-2">Tiêu đề</label>
@@ -88,34 +87,22 @@
 
         </section>
     <script>
- function changeID(obj){
-    if(obj.options[obj.selectedIndex].value != 0 && obj.options[obj.selectedIndex].value != -1 )
-    {
-      document.getElementById('type_cate').hidden=false;
-       addListType(obj.options[obj.selectedIndex].text);
-    }else{
-       document.getElementById('type_cate').hidden=true;
-    }
-  }
-    function addListType($name) {
-                var x = document.getElementById("type_list");
-                for(i=0;i<x.length;i++ )
-                {
-                  var y=x.options[i].text.split("-", 1); 
-                   
-                  var $n= y[0].localeCompare($name)   ;      
-                  console.log($n);        
-                  if($n!=0)
-                  {     
-                    console.log(y[0]);
-                    console.log($name);               
-                    x.options[i].;
-                  }
-                }            
-    //             // var option = document.createElement("option");
-    //             // option.text = $id;
-    //             // option.id = $id;
-    //             // x.add(option);
-      }
-</script>
+      $('#list_cate').on('change',function(e){
+        var type_id=e.target.value;
+        if(type_id != 0 && type_id != -1)
+        {
+           $('#div_list').show();          
+                $.get('/shop/list-cate?id='+type_id,function(data){
+                    console.log(data);
+                    $('#parentId').empty();
+                    $.each(data,function(index,object){
+                        $('#parentId').append('<option style="width=100%;" value='+ object.id+'>'+object.name+'</option>'); 
+                    })
+                });
+            }else{
+             $('#div_list').hide();
+        }
+         });
+
+  </script>
 @stop

@@ -46,7 +46,7 @@ class CategoryController extends Controller {
 	public function postEdit(Request $request,$id){
 		$this->validate($request,
 			["txtTieude" => "required"],
-			["txtTieude.required" => "Tên danh mục kgoonf được bỏ trống"]
+			["txtTieude.required" => "Tên danh mục không được bỏ trống"]
 		);
 		$category = Category::find($id);
 		$category->name = $request->txtTieude;
