@@ -56,7 +56,14 @@ class PageController extends Controller {
 	}
 	public function chitietsanpham($alias){
 		$data = DB::table('products')->where('alias',$alias)->first();
-		return view('frontend.pages.chitietsanpham',compact('data'));
+		$product_banchays = DB::table('chitiethoadons')
+            ->join('products', 'chitiethoadons.id_sanpham', '=', 'products.id')
+            ->join('hoadons', 'chitiethoadons.id_hoadon', '=', 'hoadons.id')
+            ->select('chitiethoadons.id_sanpham', 'products.*', 'hoadons.status')
+            ->where('hoadons.status',1)
+            ->groupBy('products.id','chitiethoadons.id_sanpham')
+            ->get();
+		return view('frontend.pages.chitietsanpham',compact('data','product_banchays'));
 	}
 	public function giohang(){
 		return view('frontend.pages.cart');

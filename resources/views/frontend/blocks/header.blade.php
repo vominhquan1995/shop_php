@@ -68,9 +68,11 @@
                 <ul>
                   <li class="@yield('trangchu')"> <a href="{!! url('/') !!}">Trang chủ </a> </li>
                   <li> <a href="#">Giới thiệu </a> </li>
-                  <li class="@yield('sanpham')"> <a href="{!! url('san-pham') !!}">Sản phẩm</a></li>
-                  <li class="@yield('tintuc')"> <a href="{!! url('tin-tuc') !!}">Tin tức </a> </li>
+                  <li class="@yield('sanpham')"> <a href="{!! url('san-pham')!!}">Sản phẩm</a></li>
+                    <li class="@yield('tintuc')"> <a href="#">Tin tức </a> </li>
                   <li class="@yield('lienhe')"> <a href="{!! url('lien-he') !!}">Liên hệ </a> </li>
+             <!--      <li class="@yield('tintuc')"> <a href="{!! url('tin-tuc') !!}">Tin tức </a> </li>
+                  <li class="@yield('lienhe')"> <a href="{!! url('lien-he') !!}">Liên hệ </a> </li> -->
                 </ul>
               </nav>
             </div>
