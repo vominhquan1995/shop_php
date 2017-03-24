@@ -79,6 +79,7 @@ Route::get('auth/register',['as' => 'auth.register','middleware' => 'admin','use
 Route::post('auth/register',['as' => 'auth.register','middleware' => 'admin','uses' => 'Auth\AuthController@postRegister']);
 Route::get('{alias}',['as' => 'chitietsanpham','uses' => 'PageController@chitietsanpham']);
 Route::get('danh-muc/{alias}',['as' => 'cateparent','uses' => 'PageController@cateparent']);
+Route::get('loai-san-pham/{id}',['as' => 'product_category','uses' => 'PageController@product_category']);
 Route::any('{all?}','PageController@index')->where('all','(.*)');
 
 /*

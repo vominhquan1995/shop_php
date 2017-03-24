@@ -68,21 +68,7 @@
                 <ul>
                   <li class="<?php echo $__env->yieldContent('trangchu'); ?>"> <a href="<?php echo url('/'); ?>">Trang chủ </a> </li>
                   <li> <a href="#">Giới thiệu </a> </li>
-                  <li class="<?php echo $__env->yieldContent('sanpham'); ?>"> <a href="<?php echo url('san-pham'); ?>">Sản phẩm <i class="fa fa-caret-down"></i></a>
-                    <ul>
-                    <?php $menus = DB::table('categories')->select('id','name','alias','prarent_id')->where('prarent_id',0)->orderBy('id','DESC')->get(); ?>
-                      <?php foreach($menus as $menu): ?>
-                        <li><a href="<?php echo url('danh-muc',[$menu->alias]); ?>"><?php echo $menu->name; ?></a> 
-                          <?php $parent = DB::table('categories')->select('id','name','alias','prarent_id')->where('prarent_id',$menu->id)->orderBy('id','DESC')->get(); ?>
-                            <ul>
-                              <?php foreach($parent as $parents): ?>
-                                <li><a href="<?php echo url('category',[$parents->alias]); ?>"><?php echo $parents->name ?></a></li>
-                              <?php endforeach; ?>
-                            </ul>
-                        </li>
-                      <?php endforeach; ?>
-                    </ul>
-                  </li>
+                  <li class="<?php echo $__env->yieldContent('sanpham'); ?>"> <a href="<?php echo url('san-pham'); ?>">Sản phẩm</a></li>
                   <li class="<?php echo $__env->yieldContent('tintuc'); ?>"> <a href="<?php echo url('tin-tuc'); ?>">Tin tức </a> </li>
                   <li class="<?php echo $__env->yieldContent('lienhe'); ?>"> <a href="<?php echo url('lien-he'); ?>">Liên hệ </a> </li>
                 </ul>

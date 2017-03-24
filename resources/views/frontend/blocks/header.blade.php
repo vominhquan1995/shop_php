@@ -68,21 +68,7 @@
                 <ul>
                   <li class="@yield('trangchu')"> <a href="{!! url('/') !!}">Trang chủ </a> </li>
                   <li> <a href="#">Giới thiệu </a> </li>
-                  <li class="@yield('sanpham')"> <a href="{!! url('san-pham') !!}">Sản phẩm <i class="fa fa-caret-down"></i></a>
-                    <ul>
-                    <?php $menus = DB::table('categories')->select('id','name','alias','prarent_id')->where('prarent_id',0)->orderBy('id','DESC')->get(); ?>
-                      @foreach ($menus as $menu)
-                        <li><a href="{!! url('danh-muc',[$menu->alias]) !!}">{!! $menu->name !!}</a> 
-                          <?php $parent = DB::table('categories')->select('id','name','alias','prarent_id')->where('prarent_id',$menu->id)->orderBy('id','DESC')->get(); ?>
-                            <ul>
-                              @foreach($parent as $parents)
-                                <li><a href="{!! url('category',[$parents->alias]) !!}"><?php echo $parents->name ?></a></li>
-                              @endforeach
-                            </ul>
-                        </li>
-                      @endforeach
-                    </ul>
-                  </li>
+                  <li class="@yield('sanpham')"> <a href="{!! url('san-pham') !!}">Sản phẩm</a></li>
                   <li class="@yield('tintuc')"> <a href="{!! url('tin-tuc') !!}">Tin tức </a> </li>
                   <li class="@yield('lienhe')"> <a href="{!! url('lien-he') !!}">Liên hệ </a> </li>
                 </ul>
