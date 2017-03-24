@@ -16,6 +16,7 @@ Route::group(['prefix' =>'admin','middleware' => 'admin'],function(){
 		Route::post('add',['as' => 'admin.category.postAdd','uses' => 'CategoryController@postAdd']);
 		Route::get('list',['as' => 'admin.category.getList','uses' => 'CategoryController@getList']);
 		Route::get('editparent/{id}',['as' => 'admin.category.getEditParent','uses' => 'CategoryController@getEditParent']);
+		Route::post('editparent/{id}',['as' => 'admin.category.postEditParent','uses' => 'CategoryController@postEditParent']);
 		Route::get('delete/{id}',['as' => 'admin.category.getDelete','uses' => 'CategoryController@getDelete']);
 		Route::get('edit/{id}',['as' => 'admin.category.getEdit ','uses' => 'CategoryController@getEdit']);
 		Route::post('edit/{id}',['as' => 'admin.category.postEdit','uses' => 'CategoryController@postEdit']);

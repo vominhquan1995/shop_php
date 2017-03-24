@@ -69,4 +69,19 @@ class CategoryController extends Controller {
 		$category->save();
 		return redirect()->route('admin.category.getList')->with(['flash_level' => 'success','flash_message' => 'Sữa danh mục thành công']);
 	}
+	public function postEditParent(Request $request,$id){
+		$this->validate($request,
+			["txtTieude" => "required"],
+			["txtTieude.required" => "Tên danh mục không được bỏ trống"]
+		);
+		$category = Category::find($id);
+		$category->name = $request->txtTieude;
+		$category->alias = str_slug($request->txtTieude,"-");
+		$category->order = $request->txtThutu;
+		$category->prarent_id = 0;
+		$category->keyworks = $request->txtKeyword;
+		$category->discription = $request->txtMota;
+		$category->save();
+		return redirect()->route('admin.category.getList')->with(['flash_level' => 'success','flash_message' => 'Sữa danh mục thành công']);
+	}
 }

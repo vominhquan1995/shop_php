@@ -27,6 +27,7 @@
                               <option value="0">----Danh mục mới----</option>
                               <?php cate_parent($data); ?>
                             </select>
+                        </div>   
                         </div>                      
                       <div class="form-group">
                         <label for="exampleInputEmail1" class="col-md-2">Tiêu đề</label>

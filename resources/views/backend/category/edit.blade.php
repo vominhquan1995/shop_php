@@ -17,19 +17,19 @@
                       <div class="form-group">
                         <label for="exampleInputEmail1" class="col-md-2">Danh mục</label>
                         <div class="col-md-8"> 
-                            <select class="form-control" id="list_cate" >                           
+                            <select class="form-control" name="parentId" id="list_cate" >                           
                               <?php cate_parent($parent,0,$data["prarent_id"]); ?>
                             </select>
                         </div>
                       </div>
-                      <div class="form-group"  id="div_list">
+                  <!--     <div class="form-group"  id="div_list">
                             <label for="exampleInputEmail1" class="col-md-2">Loại sản phẩm</label>
                             <div class="col-md-8"> 
                                 <select class="form-control"  name="parentId"  id="parentId">
                                           <?php cate_parent($parent,$data["prarent_id"]); ?>
                                 </select>
                             </div>
-                      </div>
+                      </div> -->
                       <div class="form-group">
                         <label for="exampleInputEmail1" class="col-md-2">Tiêu đề</label>
                         <div class="col-md-8"> 
