@@ -1,0 +1,83 @@
+<?php $__env->startSection('controller','Đơn hàng'); ?>
+<?php $__env->startSection('action','Danh sách'); ?>
+<?php $__env->startSection('hoadon','active'); ?>
+<?php $__env->startSection('list_hd','active'); ?>
+<?php $__env->startSection('content'); ?>
+ <section class="content">
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="box">
+                <div class="box-body">
+                  <table id="example2" class="table table-bordered table-hover">
+                    <thead>
+                      <tr>
+                        <th>Tên</th>
+                        <th>Email</th>
+                        <th>Số điện thoại</th>
+                        <th>Địa chỉ</th>
+                        <th>Ngày đặt</th>
+                        <th>Số Lượng</th>
+                        <th>Status</th>
+                        <th>Tông cộng</th>
+                        <th>Xóa</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    <?php foreach($hoadon as $list): ?>
+                      <tr>
+                        <td class="list_show" data-id="<?php echo $list["id"]; ?>"><?php echo $list["name"]; ?> <img src="<?php echo asset('public/upload/logoicon/dir-plus.png'); ?>"></td>
+                        <td><?php echo $list["email"]; ?></td>
+                        <td><?php echo $list["phone"]; ?></td>
+                        <td><?php echo $list["addreass"]; ?></td>
+                        <td><?php echo $list["created_at"]; ?></td>
+                        <td><?php echo $list["total_qty"]; ?></td>
+                        <td align="center">
+                            <?php if($list["status"] == 0): ?>
+                              <a href="javascript:void(0)" title="Hoàn thành dơn hàng ngay" data-id="<?php echo $list["id"]; ?>" class="update_orders hide_id_<?php echo $list['id']; ?>"><img src="<?php echo asset('public/upload/logoicon/select.png'); ?>"></a>
+                              <span class="show_id_<?php echo $list['id']; ?>"></span>
+                            <?php else: ?>
+                              Đã hoàn thành
+                            <?php endif; ?>
+                        </td>
+                        <td><?php echo number_format($list["total_price"],0,',','.') ?>đ</td>
+                        <td><a href="<?php echo url('admin/cart/delete',$list["id"]); ?>">Xóa</a></td>
+                      </tr>
+                      <?php 
+                        $cthoadon = DB::table('chitiethoadons')
+                                    ->join('products','chitiethoadons.id_sanpham','=','products.id')
+                                    ->where('chitiethoadons.id_hoadon',$list["id"])
+                                    ->groupBy('products.id','chitiethoadons.id_sanpham')->get();
+                      ?>
+                      <tr class="hide_listcthd show_listcthd_<?php echo $list['id']; ?>">
+                        <th colspan="2">Tên sản phẩm</th>
+                        <th>Hình ảnh</th>
+                        <th colspan="2">Số lượng</th>
+                        <th colspan="2">Giá sản phẩm</th>
+                        <th colspan="2">Tổng giá sản phẩm</th>
+                      </tr>
+                      <?php foreach($cthoadon as $listcthd): ?>
+                       <tr class="hide_listcthd show_listcthd_<?php echo $list['id']; ?>">
+                        <td colspan="2"><a href="<?php echo url('/',$listcthd->alias); ?>" target="new"><?php echo $listcthd->name; ?></a></td>
+                        <td><img src="<?php echo asset('public/upload/'.$listcthd->image); ?>" width="30"></td>
+                        <td colspan="2"><?php echo $listcthd->soluong; ?></td>
+                        <td colspan="2"><?php echo number_format($listcthd->giasp,0,',','.') ?>đ</td>
+                        <td colspan="2"><?php echo number_format($listcthd->tong_giasp,0,',','.') ?>đ</td>
+                      </tr>
+                      <?php endforeach; ?>
+                    <?php endforeach; ?>
+                    </tbody>
+                  </table>
+                  <div class="pull-right">
+                    <?php $hoadon->setPath('list'); ?>
+                    <?php echo $hoadon->render(); ?>                 
+                  </div>
+                </div><!-- /.box-body -->
+              </div><!-- /.box -->
+
+              <!-- /.box -->
+            </div><!-- /.col -->
+          </div><!-- /.row -->
+        </section>
+    
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('backend.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

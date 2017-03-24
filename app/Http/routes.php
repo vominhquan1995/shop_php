@@ -48,6 +48,12 @@ Route::group(['prefix' =>'admin','middleware' => 'admin'],function(){
 		Route::get('add',['as' => 'admin.cart.getadd','uses' => 'Auth\AuthController@getRegister']);
 		Route::post('add',['as' => 'admin.cart.postadd','uses' => 'Auth\AuthController@postRegister']);
 	});
+	Route::group(['prefix' => 'report'],function(){
+		Route::get('order',['as' => 'admin.report.getorder','uses' => 'ReportController@getOrder']);
+		Route::post('order',['as' => 'admin.report.getorder','uses' => 'ReportController@postOrder']);
+		//Route::get('add',['as' => 'admin.cart.getadd','uses' => 'Auth\AuthController@getRegister']);
+		//Route::post('add',['as' => 'admin.cart.postadd','uses' => 'Auth\AuthController@postRegister']);
+	});
 });
 Route::get('dang-xuat',['as' => 'dangxuat','uses' => 'Auth\AuthController@getLogout']);
 Route::get('san-pham',['as' => 'sanpham','uses' => 'PageController@category']);
