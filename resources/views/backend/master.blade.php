@@ -8,6 +8,7 @@
     <!-- Bootstrap 3.3.4 -->
     <link rel="stylesheet" type="text/css" href="{{ url('public/backend/css/AdminLTE.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url('public/backend/css/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url('public/backend/css/bootstrap-datetimepicker.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url('public/backend/css/bootstrap.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url('public/backend/css/_all-skins.min.css') }}">
     <link rel="stylesheet" type="text/css" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
@@ -256,9 +257,10 @@
               </a>
               <ul class="treeview-menu">
                 <li class="@yield('list_hd')"><a href="{!! url('admin/cart/list') !!}"><i class="fa fa-circle-o"></i> Danh sách đơn hàng</a></li>
+                <li class="@yield('reportoder')"><a href="{!! url('admin/report/order') !!}"><i class="fa fa-bar-chart"></i> Thống kê</a></li>
                 <li><a href="{!! url('admin/cart/khuyenmai') !!}"><i class="fa fa-circle-o"></i> Nhập mã khuyến mại</a></li>
                 <li><a href="{!! url('admin/cart/khuyenmai') !!}"><i class="fa fa-circle-o"></i> Danh sách ID khuyến mại</a></li>
-
+                
               </ul>
             </li>
             <li class="treeview @yield('user')">
@@ -328,6 +330,8 @@
 
 <script src="{{ url('public/backend/js/app.min.js') }}"></script>
 <script src="{{ url('public/backend/js/bootstrap-datepicker.js') }}"></script>
+<script src="{{ url('public/backend/js/moment-with-locales.js') }}"></script>
+<script src="{{ url('public/backend/js/bootstrap-datetimepicker.js') }}"></script>
 <script src="{{ url('public/backend/js/bootstrap.min.js') }}"></script>
 
 
