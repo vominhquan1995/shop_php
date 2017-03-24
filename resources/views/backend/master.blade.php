@@ -314,9 +314,9 @@
       </div><!-- /.content-wrapper -->
       <footer class="main-footer">
         <div class="pull-right hidden-xs">
-          <b>Version 9x</b>
+          <b>Version 1.0.0.0</b>
         </div>
-        <strong>Designer by Ba Loc && Hoang Ty 2016 &copy;</strong>
+        <strong>Designer by team QNT 2017 &copy;</strong>
       </footer>
       
       <!-- Add the sidebar's background. This div must be placed

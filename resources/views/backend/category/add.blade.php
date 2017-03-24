@@ -6,6 +6,7 @@
 @section('content')
 <section class="content">
           <div class="row">
+            <script type="text/javascript"></script>
             <!-- left column -->
             <div class="col-md-12">
              @include ('backend.blocks.error')
@@ -21,9 +22,19 @@
                     <div class="form-group">
                         <label for="exampleInputEmail1" class="col-md-2">Danh mục</label>
                         <div class="col-md-8"> 
-                            <select class="form-control" name="parentId">
-                              <option value="0">Mời bạn chọn</option>
+                            <select class="form-control" name="parentId" id="parentId" onChange="changeID(this)">
+                              <option value="-1">Mời bạn chọn</option>
+                              <option value="0">----Danh mục mới----</option>
                               <?php cate_parent($data); ?>
+                            </select>
+                        </div>
+                      </div>
+                         <div class="form-group" hidden="true" id="type_cate">
+                        <label for="exampleInputEmail1" class="col-md-2">Loại sản phẩm</label>
+                        <div class="col-md-8"> 
+                            <select class="form-control" name="parentId" id="type_list">
+                              <option value="0">Mời bạn chọn</option> 
+                              <?php list_type($data); ?>                     
                             </select>
                         </div>
                       </div>
@@ -76,5 +87,35 @@
           
 
         </section>
-    
+    <script>
+ function changeID(obj){
+    if(obj.options[obj.selectedIndex].value != 0 && obj.options[obj.selectedIndex].value != -1 )
+    {
+      document.getElementById('type_cate').hidden=false;
+       addListType(obj.options[obj.selectedIndex].text);
+    }else{
+       document.getElementById('type_cate').hidden=true;
+    }
+  }
+    function addListType($name) {
+                var x = document.getElementById("type_list");
+                for(i=0;i<x.length;i++ )
+                {
+                  var y=x.options[i].text.split("-", 1); 
+                   
+                  var $n= y[0].localeCompare($name)   ;      
+                  console.log($n);        
+                  if($n!=0)
+                  {     
+                    console.log(y[0]);
+                    console.log($name);               
+                    x.options[i].;
+                  }
+                }            
+    //             // var option = document.createElement("option");
+    //             // option.text = $id;
+    //             // option.id = $id;
+    //             // x.add(option);
+      }
+</script>
 @stop
