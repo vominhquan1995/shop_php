@@ -234,7 +234,7 @@
               </a>
               <ul class="treeview-menu">
                 <li class="@yield('them_dm')"><a href="{!! url('admin/category/add') !!}"><i class="fa fa-circle-o"></i> Thêm danh mục</a></li>
-                <li class="@yield('list_dm')"><a href="{!! url('admin/category/list') !!}"><i class="fa fa-circle-o"></i> Danh mục cấp</a></li>
+                <li class="@yield('list_dm')"><a href="{!! url('admin/category/list') !!}"><i class="fa fa-circle-o"></i> Danh mục</a></li>
               </ul>
             </li>
 

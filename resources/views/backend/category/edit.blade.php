@@ -26,7 +26,6 @@
                             <label for="exampleInputEmail1" class="col-md-2">Loại sản phẩm</label>
                             <div class="col-md-8"> 
                                 <select class="form-control"  name="parentId"  id="parentId">
-                                          <option value="0" hidden="true"></option>  
                                           <?php cate_parent($parent,$data["prarent_id"]); ?>
                                 </select>
                             </div>
@@ -79,5 +78,7 @@
           </div>   <!-- /.row -->
 
         </section>
-    
+           <script type="text/javascript">
+          $('#')
+        </script>
 @stop

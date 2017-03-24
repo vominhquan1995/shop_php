@@ -22,18 +22,18 @@
                     <div class="form-group">
                         <label for="exampleInputEmail1" class="col-md-2">Danh mục</label>
                         <div class="col-md-8"> 
-                            <select class="form-control"  id="list_cate" >
+                            <select class="form-control"  name="parentId" id="list_cate" >
                               <option value="-1">Mời bạn chọn</option>
                               <option value="0">----Danh mục mới----</option>
                               <?php cate_parent($data); ?>
                             </select>
                         </div>
                       </div>
-                      <div class="form-group"  hidden="true" id="div_list">
+                         <div class="form-group"  hidden="true" id="div_list">
                             <label for="exampleInputEmail1" class="col-md-2">Loại sản phẩm</label>
                             <div class="col-md-8"> 
                                 <select class="form-control"  id="parentId">
-                                          <option value="0" hidden="true"></option>
+                                         
                                 </select>
                             </div>
                       </div>

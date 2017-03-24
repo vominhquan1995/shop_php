@@ -17,7 +17,12 @@ class CategoryController extends Controller {
 		$category->name = $request->txtTieude;
 		$category->alias = str_slug($request->txtTieude,"-");
 		$category->order = $request->txtThutu;
-		$category->prarent_id = $request->parentId;
+		if($request->parentId==null)
+		{
+		$category->prarent_id = 0;
+		}else{
+			$category->prarent_id = $request->parentId;
+		}	
 		$category->keyworks = $request->txtKeyword;
 		$category->discription = $request->txtMota;
 		$category->save();
