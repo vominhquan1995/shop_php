@@ -185,7 +185,11 @@ class PageController extends Controller {
 		$thanhvien->remember_token = $request->input('_token');
 		$thanhvien->save();
 		//alert ("Đăng ký thành công");
-		return view('/');
+		return redirect()->route('trangchu')->with(['flash_level' => 'success','flash_message' =>'Đăng kí tài khoản thành công']);
+		// echo "	
+		// <script>
+		// window.location ='".url('/')."';
+		// </script>";
 		
 	}
     

@@ -13,7 +13,7 @@
 <link rel="stylesheet" type="text/css" href="{{ url('public/frontend/css/jquery.mmenu.css') }}"/>
 <link rel="stylesheet" type="text/css" href="{{ url('public/frontend/css/owl.carousel.css') }}"/>
 <link rel="stylesheet" type="text/css" href="{{ url('public/frontend/css/style.css') }}"/>
-<script type="text/javascript" src="{{ url('public/frontend/js/jquery-1.11.3.min.js') }}"></script> 
+<script type="text/javascript" src="{{ url('public/frontend/js/jquery-3.2.0.min.js') }}"></script> 
 <script type="text/javascript" src="{{ url('public/frontend/js/ajax_cart.js') }}"></script>
 <script type="text/javascript" src="{{ url('public/frontend/js/danh_gia.js') }}"></script>
 <script type="text/javascript" src="{{ url('public/frontend/js/ddaccordion.js') }}"></script>
@@ -28,11 +28,10 @@
     @include('frontend.blocks.header')
    <!-- end header -->
     @if(Session::has('flash_message'))
-      <div class="alert alert-{!! Session::get('flash_level') !!}" style="margin-top:10px">
+      <div class="alert alert-{!! Session::get('flash_level') !!}" style="margin-top:10px ; text-align: center;">
           {!! Session::get('flash_message') !!}
       </div>
-    @endif
-    
+    @endif    
     <!--- content -->
     @yield('content')
       <!-- end content -->

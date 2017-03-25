@@ -1,6 +1,6 @@
   <section class="">
     <div class="container">
-      <div class="col-md-3 sidebar">
+      <div class="col-md-3 col-md-9 sidebar">
         <div class="sb-block">
           <div class="sb-block-title">
             <h2>Danh mục sản phẩm</h2>
@@ -32,7 +32,6 @@
             <h2>Sản phẩm bán chạy</h2>
           </div>
           <div class="sb-block-content sb-products" >
-            <ul>
               <?php  
               $product_banchays = DB::table('chitiethoadons')
             ->join('products', 'chitiethoadons.id_sanpham', '=', 'products.id')
@@ -42,20 +41,26 @@
             ->groupBy('products.id','chitiethoadons.id_sanpham')
             ->get(); ?>
               @foreach ($product_banchays as $product_banchay)
-              <div data-id="{!! $product_banchay->id !!}">
-                 <li class="product-item-mini" > 
+              <div data-id="{!! $product_banchay->id !!}"  class="product-item-mini"> 
                 <a href="{!! url('/'.$product_banchay->alias) !!}" > 
                   <img class="pim-image"src="{!! asset('public/upload/'.$product_banchay->image) !!}">
                   <h3 class="pim-name"  >{!! substr($product_banchay->name,0,15) !!}</h3>
-                  <p class="pim-description">{!! substr($product_banchay->intro,0,10) !!}</p>
-                  <p class="pim-price"><?php echo number_format($product_banchay->pricesale,0,',','.') ?>đ
-                    <span> <?php echo number_format($product_banchay->price,0,',','.') ?>đ  </span> </p>
+                  <p class="pim-price">
+                    <?php 
+                    if(number_format($product_banchay->pricesale,0,',','.')==0)
+                    {
+                          echo number_format($product_banchay->price,0,',','.')  ;
+                    }else
+                    {
+                     echo number_format($product_banchay->pricesale,0,',','.');
+                    }?>đ 
+                     <span><?php echo number_format($product_banchay->price,0,',','.') ?>đ</span>
+                  </p>
                 </a> 
-               </li>
               </div>         
              @endforeach
-            </ul>
-          </div></div>
+          </div>
+        </div>
       </div>
   </div>
   </section>
