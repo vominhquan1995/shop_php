@@ -87,11 +87,11 @@
           function changeStatus(id){
              $.post('{!! url("admin/cart/updatestatus") !!}',{id : id},function(status){
                   if(status == 'success'){
-                    alert('Hoàn thành đơn hàng thành công');
                     var idJS = 'td[data-id="viewflag"]';
                     idJS = idJS.replace('flag', id);
                     $(idJS).html('Đã hoàn thành');
-
+                    alert('Hoàn thành đơn hàng thành công');
+                  
                   }
              })
           }
