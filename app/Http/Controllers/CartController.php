@@ -21,4 +21,15 @@ class CartController extends Controller {
 		$hoadon->save();
 		echo "oke";
 	}
+
+	public function updatestatus(request $request){
+		if($request->ajax()){
+			$hoadon = Hoadon::findOrFail($request->id);
+			$hoadon->status = 1;
+			$hoadon->save();
+			return "success";
+		}
+		return "HTTP";
+		
+	}
 }

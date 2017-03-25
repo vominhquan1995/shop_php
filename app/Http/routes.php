@@ -43,6 +43,7 @@ Route::group(['prefix' =>'admin','middleware' => 'admin'],function(){
 		Route::get('list',['as' => 'admin.cart.getCart','uses' => 'CartController@listcart']);
 		Route::get('delete/{id}',['as' => 'admin.cart.getDelete','uses' => 'CartController@delete']);
 		Route::get('update/{id}',['as' => 'admin.cart.getCapnhat','uses' => 'CartController@update']);
+		Route::post('updatestatus',['as' => 'admin.cart.postupdatestatus','uses' => 'CartController@updatestatus']);
 	});
 	Route::group(['prefix' => 'user'],function(){
 		Route::get('list',['as' => 'admin.user.getList','uses' => 'Auth\AuthController@getList']);
