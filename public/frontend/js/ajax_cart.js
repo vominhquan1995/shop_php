@@ -48,4 +48,18 @@ $(document).ready(function() {
 				}
 		});
 	});
+	// $("#quality_cart").on("change",function(){
+	// 	var id = $("#quality_cart").attr("data-id");
+	// 	var qty = $("#quality_cart").val();
+	// 	//alert(qty);
+	// 	 $.ajax({
+	// 		url : 'update-cart/'+id+'/'+qty,
+	// 		dataType : 'html',
+	// 		success: function(result){
+	// 			if(result){
+	// 					window.location = 'gio-hang';
+	// 				}
+	// 			}
+	// 	});
+	// });
 });
