@@ -67,7 +67,11 @@
             </div>
             <div class="sb-block-content sb-products">
               <ul>
-              @foreach ($product_banchays as $product_banchay)
+                 <?php $prodcut_lq = DB::table('products')
+              ->where('cate_id',$data->cate_id)
+              ->orderBy('id','DESC')
+              ->take(4)->get()?>
+              @foreach ($prodcut_lq as $product_banchay)
 
                 <li class="product-item-mini"> <a href="{!! url('/',$product_banchay->alias) !!}">
                  <img class="pim-image" src="{!! asset('public/upload/'.$product_banchay->image) !!}">
@@ -142,16 +146,13 @@
             </div>
           </div>
         </div>
-        <div class="col-md-12">
+<!--         <div class="col-md-12">
           <div class="cc-products">
             <div class="row">
               <div class="col-md-12">
                 <h2 class="cc-products-title">Sản phẩm Liên quan</h2>
               </div>
-              <?php $prodcut_lq = DB::table('products')
-              ->where('cate_id',$data->cate_id)
-              ->orderBy('id','DESC')
-              ->take(4)->get()?>
+             
               @foreach($prodcut_lq as $prodcut_lqs)
               <div class="col-md-3">
                 <div class="product-item-category">
@@ -169,7 +170,7 @@
               @endforeach
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </section>

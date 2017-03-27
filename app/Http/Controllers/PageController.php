@@ -34,37 +34,35 @@ class PageController extends Controller {
 	}
 	public function category(){
 		$products = DB::table('products')->select('id','name','image','price','pricesale','alias')->orderBy('id','DESC')->paginate(9);
-		$categorys = DB::table('categories')->select('id','name','alias','prarent_id')->where('prarent_id',0)->orderBy('id','DESC')->get();
-		return view('frontend.pages.category',compact('products','categorys'));
+		return view('frontend.pages.category',compact('products'));
 	}
 	public function cateparent($alias){
 		//$products = DB::table('products')->select('id','name','image','price','pricesale','alias')->where('cate_id',$id)->orderBy('id','DESC')->paginate(9);
-		$categorys = DB::table('categories')->select('id','name','alias','prarent_id')->where('prarent_id',0)->orderBy('id','DESC')->get();
+		// $categorys = DB::table('categories')->select('id','name','alias','prarent_id')->where('prarent_id',0)->orderBy('id','DESC')->get();
 		$products = DB::table('categories')
             ->join('products', 'categories.id', '=', 'products.cate_id')
             ->select('categories.alias','products.*')->where('categories.alias',$alias)->groupBy('categories.alias','products.alias')
             ->paginate(9);
-        $product_banchays = DB::table('chitiethoadons')
-            ->join('products', 'chitiethoadons.id_sanpham', '=', 'products.id')
-            ->join('hoadons', 'chitiethoadons.id_hoadon', '=', 'hoadons.id')
-            ->select('chitiethoadons.id_sanpham', 'products.*', 'hoadons.status')
-            ->where('hoadons.status',1)
-            ->groupBy('products.id','chitiethoadons.id_sanpham')
-            ->get();
 		$namecate = DB::table('categories')->select('id','name','alias','prarent_id')->where('alias',$alias)->first();
-		return view('frontend.pages.cateparent',compact('products','categorys','namecate','product_banchays'));
+		return view('frontend.pages.cateparent',compact('products','namecate'));
+	}
+	public function product_category($id){
+		$products = DB::table('categories')
+            ->join('products', 'categories.id', '=', 'products.cate_id')
+            ->select('categories.alias','products.*')->where('categories.prarent_id',$id)->groupBy('categories.alias','products.alias')
+            ->paginate(9);
+         $namecate = DB::table('categories')->select('id','name','alias','prarent_id')->where('id',$id)->first();
+		return view('frontend.pages.product_category',compact('products','namecate'));
 	}
 	public function chitietsanpham($alias){
+		$data = DB::table('products')->where('alias',$alias)->first();
 		$product_banchays = DB::table('chitiethoadons')
             ->join('products', 'chitiethoadons.id_sanpham', '=', 'products.id')
             ->join('hoadons', 'chitiethoadons.id_hoadon', '=', 'hoadons.id')
             ->select('chitiethoadons.id_sanpham', 'products.*', 'hoadons.status')
             ->where('hoadons.status',1)
-            ->orderBy('hoadons.id','DESC')
             ->groupBy('products.id','chitiethoadons.id_sanpham')
-            ->take(4)
             ->get();
-		$data = DB::table('products')->where('alias',$alias)->first();
 		return view('frontend.pages.chitietsanpham',compact('data','product_banchays'));
 	}
 	public function giohang(){
@@ -89,10 +87,18 @@ class PageController extends Controller {
 		echo Cart::count();
 	}
 	public function thanhtoan(){
-		return view('frontend.pages.sendorders');
+		if(Auth::User()){
+			if(Auth::User()->level == 2){
+				return view('frontend.pages.sendorders');
+			}
+		}else{
+			return redirect()->route('dangnhap');
+		}
+		 
 	}
 	public function postthanhtoan(CartRequest $request){
 		$hoadon = new Hoadon;
+		$hoadon->user_id=Auth::User()->id;
 		$hoadon->name = $request->txtName;
 		$hoadon->email = $request->txtEmail;
 		$hoadon->phone = $request->txtPhone;
@@ -187,7 +193,11 @@ class PageController extends Controller {
 		$thanhvien->remember_token = $request->input('_token');
 		$thanhvien->save();
 		//alert ("Đăng ký thành công");
-		return view('/');
+		return redirect()->route('trangchu')->with(['flash_level' => 'success','flash_message' =>'Đăng kí tài khoản thành công']);
+		// echo "	
+		// <script>
+		// window.location ='".url('/')."';
+		// </script>";
 		
 	}
     

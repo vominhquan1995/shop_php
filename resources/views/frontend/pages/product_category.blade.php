@@ -1,13 +1,14 @@
-<?php $__env->startSection('sanpham', 'active'); ?>
-<?php $__env->startSection('title','Danh sách các sản phẩm'); ?>
-<?php $__env->startSection('content'); ?>
+@extends('frontend.master')
+@section('sanpham', 'active')
+@section('title','Danh sách sản phẩm theo loại')
+@section('content')
 <!-- hien tiêu đề -->
 <section class="content-slide">
   <div class="container">
     <div class="row">
         <ul class="breadcrumb">
-          <li><a href="<?php echo asset('/'); ?>">Trang chủ</a></li>
-          <li class="active"><?php echo $namecate->name; ?></li>
+          <li><a href="{!! asset('/') !!}">Trang chủ</a></li>
+          <li class="active">{!! $namecate->name !!}</li>
         </ul>
       </div>
     </div>
@@ -17,35 +18,35 @@
 <section class="">
   <div class="container">
       <div class="col-md-3 sidebar">
-       <?php echo $__env->make('frontend.blocks.menu_left', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+       @include('frontend.blocks.menu_left')
       </div>
       <div class="col-md-9 content-category">
          <div class="col-md-12 col-sm-12 col-xs-12">
-                <div class="sb-block-title"><h2>Danh Sách Sản Phẩm Theo Nhóm Sản Phẩm</h2></div>
+                <div class="sb-block-title"><h2>Danh Sách Sản Phẩm Theo Loại Sản Phẩm</h2></div>
                 <div class="cc-products">
           <div class="row">
           <!-- sản phẩm category -->
-            <?php foreach($products as $product): ?>
+            @foreach ($products as $product)
             <div class="col-md-4 col-sm-6 ">
               <div class="product-item-category" style="height: 420px;">
-                <div class="product-item-image"> <a href="<?php echo url('/'.$product->alias); ?>"> 
-                <img class="img-responsive" src="<?php echo asset('public/upload/'.$product->image); ?>"> </a> </div>
-                <a class="product-item-name" href="<?php echo url('/'.$product->alias); ?>"><?php echo substr($product->name,0,20);; ?></a>
+                <div class="product-item-image"> <a href="{!! url('/'.$product->alias) !!}"> 
+                <img class="img-responsive" src="{!! asset('public/upload/'.$product->image) !!}"> </a> </div>
+                <a class="product-item-name" href="{!! url('/'.$product->alias) !!}">{!! substr($product->name,0,20); !!}</a>
                     <br/>
                   <div>
-                  <?php if($product->pricesale > 0): ?>
+                  @if($product->pricesale > 0)
                     <p class="product-item-price"> <?php echo number_format($product->pricesale,0,',','.') ?>đ
                     <span class="product-item-price-sale"> <?php echo number_format($product->price,0,',','.') ?>đ </span> </p>
                     <br/>
-                  <?php else: ?>
+                  @else
                     <p class="product-item-price"><?php echo number_format($product->price,0,',','.') ?>đ </p>
                     <br/>
-                  <?php endif; ?>
-                    <a class="product-item-cart add_to_cart" href="javascript:void(0)" data-id="<?php echo $product->id; ?>">
+                  @endif
+                    <a class="product-item-cart add_to_cart" href="javascript:void(0)" data-id="{!! $product->id !!}">
                     <span></span>Thêm vào giỏ</a> </div>
               </div>
             </div>
-            <?php endforeach; ?>
+            @endforeach
             <!-- end sản phẩm category -->
           </div>
                 <!-- phẩn trang -->
@@ -67,5 +68,4 @@
   </div>
 </div>
 </section>
-<?php $__env->stopSection(); ?>
-<?php echo $__env->make('frontend.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+@stop

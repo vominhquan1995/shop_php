@@ -22,7 +22,7 @@
        <div class="col-md-3 sidebar">
        @include('frontend.blocks.menu_left')
       </div>
-      <div class="col-md-9 col-sm-12 col-xs-12">
+      <div class="col-md-9">
         <div class="sb-block-title">
           <h2>Danh Sách Sản Phẩm</h2>
          </div>

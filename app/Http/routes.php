@@ -43,6 +43,7 @@ Route::group(['prefix' =>'admin','middleware' => 'admin'],function(){
 		Route::get('list',['as' => 'admin.cart.getCart','uses' => 'CartController@listcart']);
 		Route::get('delete/{id}',['as' => 'admin.cart.getDelete','uses' => 'CartController@delete']);
 		Route::get('update/{id}',['as' => 'admin.cart.getCapnhat','uses' => 'CartController@update']);
+		Route::post('updatestatus',['as' => 'admin.cart.postupdatestatus','uses' => 'CartController@updatestatus']);
 	});
 	Route::group(['prefix' => 'user'],function(){
 		Route::get('list',['as' => 'admin.user.getList','uses' => 'Auth\AuthController@getList']);
@@ -85,6 +86,7 @@ Route::get('auth/register',['as' => 'auth.register','middleware' => 'admin','use
 Route::post('auth/register',['as' => 'auth.register','middleware' => 'admin','uses' => 'Auth\AuthController@postRegister']);
 Route::get('{alias}',['as' => 'chitietsanpham','uses' => 'PageController@chitietsanpham']);
 Route::get('danh-muc/{alias}',['as' => 'cateparent','uses' => 'PageController@cateparent']);
+Route::get('loai-san-pham/{id}',['as' => 'product_category','uses' => 'PageController@product_category']);
 Route::any('{all?}','PageController@index')->where('all','(.*)');
 
 

@@ -11,5 +11,8 @@ class Hoadon extends Model {
 	public function chitiethoadon(){
 		return $this->hasMany('App\Chitiethoadon');
 	}
+	public function user(){
+		return $this->belongsTo('App\User');
+	}
 
 }

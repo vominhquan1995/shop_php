@@ -7,6 +7,9 @@
  <section class="content">  
            <div class="row">
                       <div class="col-xs-12">
+                            <div class="sb-block-title">
+                              <h4>Danh mục cha</h4>
+                            </div>
                         <div class="box">
                           <div class="box-body">
                             <table id="example2" class="table table-bordered table-hover">
@@ -42,9 +45,12 @@
                         </div><!-- /.box -->
                         <!-- /.box -->
                       </div><!-- /.col -->
-                    </div><!-- /.row -->            
+        </div><!-- /.row -->            
           <div class="row">
             <div class="col-xs-12">
+              <div class="sb-block-title">
+                              <h4>Danh mục con</h4>
+              </div>
               <div class="box">
                 <div class="box-body">
                   <table id="example2" class="table table-bordered table-hover">

@@ -1,9 +1,8 @@
-@extends('backend.master')
-@section('controller','Đơn hàng')
-@section('action','Danh sách')
-@section('hoadon','active')
-@section('list_hd','active')
-@section('content')
+<?php $__env->startSection('controller','Đơn hàng'); ?>
+<?php $__env->startSection('action','Danh sách'); ?>
+<?php $__env->startSection('hoadon','active'); ?>
+<?php $__env->startSection('list_hd','active'); ?>
+<?php $__env->startSection('content'); ?>
  <section class="content">
           <div class="row">
             <div class="col-xs-12">
@@ -24,24 +23,24 @@
                       </tr>
                     </thead>
                     <tbody>
-                    @foreach($hoadon as $list)
+                    <?php foreach($hoadon as $list): ?>
                       <tr>
-                        <td class="list_show" data-id="{!! $list["id"] !!}">{!! $list["name"] !!} <img src="{!! asset('public/upload/logoicon/dir-plus.png') !!}"></td>
-                        <td>{!! $list["email"] !!}</td>
-                        <td>{!! $list["phone"] !!}</td>
-                        <td>{!! $list["addreass"] !!}</td>
-                        <td>{!! $list["created_at"] !!}</td>
-                        <td>{!! $list["total_qty"] !!}</td>
-                        <td align="center" data-id="view{!! $list["id"] !!}">
-                            @if($list["status"] == 0)
-                              <a href="javascript:void(0)" title="Hoàn thành dơn hàng ngay" onclick="changeStatus({!! $list["id"] !!})"  class="update_orders hide_id_{!! $list['id'] !!}"><img src="{!! asset('public/upload/logoicon/select.png') !!}"></a>
-                              <span class="show_id_{!! $list['id'] !!}"></span>
-                            @else
+                        <td class="list_show" data-id="<?php echo $list["id"]; ?>"><?php echo $list["name"]; ?> <img src="<?php echo asset('public/upload/logoicon/dir-plus.png'); ?>"></td>
+                        <td><?php echo $list["email"]; ?></td>
+                        <td><?php echo $list["phone"]; ?></td>
+                        <td><?php echo $list["addreass"]; ?></td>
+                        <td><?php echo $list["created_at"]; ?></td>
+                        <td><?php echo $list["total_qty"]; ?></td>
+                        <td align="center" data-id="view<?php echo $list["id"]; ?>">
+                            <?php if($list["status"] == 0): ?>
+                              <a href="javascript:void(0)" title="Hoàn thành dơn hàng ngay" onclick="changeStatus(<?php echo $list["id"]; ?>)"  class="update_orders hide_id_<?php echo $list['id']; ?>"><img src="<?php echo asset('public/upload/logoicon/select.png'); ?>"></a>
+                              <span class="show_id_<?php echo $list['id']; ?>"></span>
+                            <?php else: ?>
                               Đã hoàn thành
-                            @endif
+                            <?php endif; ?>
                         </td>
                         <td><?php echo number_format($list["total_price"],0,',','.') ?>đ</td>
-                        <td><a href="{!! url('admin/cart/delete',$list["id"]) !!}">Xóa</a></td>
+                        <td><a href="<?php echo url('admin/cart/delete',$list["id"]); ?>">Xóa</a></td>
                       </tr>
                       <?php 
                         $cthoadon = DB::table('chitiethoadons')
@@ -49,23 +48,23 @@
                                     ->where('chitiethoadons.id_hoadon',$list["id"])
                                     ->groupBy('products.id','chitiethoadons.id_sanpham')->get();
                       ?>
-                      <tr class="hide_listcthd show_listcthd_{!! $list['id'] !!}">
+                      <tr class="hide_listcthd show_listcthd_<?php echo $list['id']; ?>">
                         <th colspan="2">Tên sản phẩm</th>
                         <th>Hình ảnh</th>
                         <th colspan="2">Số lượng</th>
                         <th colspan="2">Giá sản phẩm</th>
                         <th colspan="2">Tổng giá sản phẩm</th>
                       </tr>
-                      @foreach($cthoadon as $listcthd)
-                       <tr class="hide_listcthd show_listcthd_{!! $list['id'] !!}">
-                        <td colspan="2"><a href="{!! url('/',$listcthd->alias) !!}" target="new">{!! $listcthd->name !!}</a></td>
-                        <td><img src="{!! asset('public/upload/'.$listcthd->image) !!}" width="30"></td>
-                        <td colspan="2">{!! $listcthd->soluong !!}</td>
+                      <?php foreach($cthoadon as $listcthd): ?>
+                       <tr class="hide_listcthd show_listcthd_<?php echo $list['id']; ?>">
+                        <td colspan="2"><a href="<?php echo url('/',$listcthd->alias); ?>" target="new"><?php echo $listcthd->name; ?></a></td>
+                        <td><img src="<?php echo asset('public/upload/'.$listcthd->image); ?>" width="30"></td>
+                        <td colspan="2"><?php echo $listcthd->soluong; ?></td>
                         <td colspan="2"><?php echo number_format($listcthd->giasp,0,',','.') ?>đ</td>
                         <td colspan="2"><?php echo number_format($listcthd->tong_giasp,0,',','.') ?>đ</td>
                       </tr>
-                      @endforeach
-                    @endforeach
+                      <?php endforeach; ?>
+                    <?php endforeach; ?>
                     </tbody>
                   </table>
                   <div class="pull-right">
@@ -85,17 +84,19 @@
         <script>
 
           function changeStatus(id){
-             $.post('{!! url("admin/cart/updatestatus") !!}',{id : id},function(status){
+             $.post('<?php echo url("admin/cart/updatestatus"); ?>',{id : id},function(status){
                   if(status == 'success'){
+                    alert('Hoàn thành đơn hàng thành công');
+                    debugger
                     var idJS = 'td[data-id="viewflag"]';
                     idJS = idJS.replace('flag', id);
                     $(idJS).html('Đã hoàn thành');
-                    alert('Hoàn thành đơn hàng thành công');
-                  
+
                   }
              })
           }
 
         </script>
     
-@stop
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('backend.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

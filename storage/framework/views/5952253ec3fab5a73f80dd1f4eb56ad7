@@ -1,5 +1,5 @@
 <?php $__env->startSection('sanpham', 'active'); ?>
-<?php $__env->startSection('title','Danh sách các sản phẩm'); ?>
+<?php $__env->startSection('title','Danh sách sản phẩm theo loại'); ?>
 <?php $__env->startSection('content'); ?>
 <!-- hien tiêu đề -->
 <section class="content-slide">
@@ -21,7 +21,7 @@
       </div>
       <div class="col-md-9 content-category">
          <div class="col-md-12 col-sm-12 col-xs-12">
-                <div class="sb-block-title"><h2>Danh Sách Sản Phẩm Theo Nhóm Sản Phẩm</h2></div>
+                <div class="sb-block-title"><h2>Danh Sách Sản Phẩm Theo Loại Sản Phẩm</h2></div>
                 <div class="cc-products">
           <div class="row">
           <!-- sản phẩm category -->

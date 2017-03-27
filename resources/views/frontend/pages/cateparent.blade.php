@@ -1,6 +1,6 @@
 @extends('frontend.master')
 @section('sanpham', 'active')
-@section('title','Danh mục sách các loại')
+@section('title','Danh sách các sản phẩm')
 @section('content')
 <!-- hien tiêu đề -->
 <section class="content-slide">
@@ -22,7 +22,7 @@
       </div>
       <div class="col-md-9 content-category">
          <div class="col-md-12 col-sm-12 col-xs-12">
-                <div class="sb-block-title"><h2>Danh Sách Sản Phẩm</h2></div>
+                <div class="sb-block-title"><h2>Danh Sách Sản Phẩm Theo Nhóm Sản Phẩm</h2></div>
                 <div class="cc-products">
           <div class="row">
           <!-- sản phẩm category -->
