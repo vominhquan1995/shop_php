@@ -87,10 +87,18 @@ class PageController extends Controller {
 		echo Cart::count();
 	}
 	public function thanhtoan(){
-		return view('frontend.pages.sendorders');
+		if(Auth::User()){
+			if(Auth::User()->level == 2){
+				return view('frontend.pages.sendorders');
+			}
+		}else{
+			return redirect()->route('dangnhap');
+		}
+		 
 	}
 	public function postthanhtoan(CartRequest $request){
 		$hoadon = new Hoadon;
+		$hoadon->user_id=Auth::User()->id;
 		$hoadon->name = $request->txtName;
 		$hoadon->email = $request->txtEmail;
 		$hoadon->phone = $request->txtPhone;
