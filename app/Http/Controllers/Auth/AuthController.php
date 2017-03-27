@@ -5,7 +5,7 @@ use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Auth\Registrar;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use App\Http\Requests;
-
+use App\Hoadon;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
 use Auth,DB,Hash;
@@ -116,7 +116,7 @@ class AuthController extends Controller {
 	}
 		public function getChangePass()
 		{
-				$mess = "";
+		$mess = "";
 		return view('backend.user.changepass',compact('mess'));
 		}
 		public function postChangePass(RegisterRequest $request)
@@ -128,4 +128,8 @@ class AuthController extends Controller {
 		return view('backend.user.changepass',compact('mess'));
 
 		}
+	public function getListOrdered($id){
+		$hoadon =hoadon::where('user_id',$id)->get();
+		return view('backend.user.listodered',compact('hoadon'));
+	}
 }

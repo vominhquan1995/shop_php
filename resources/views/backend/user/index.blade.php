@@ -6,7 +6,7 @@
 <div class="row ">
     <div class="col-md-12">
         <div class="col-md-6 col-md-offset-3">
-        <h2 style="color: red"> Thông tin tài khoản  </h2>	<a href="doi-mat-khau">Đổi mật khẩu</a> <br> <a href="doi-mat-khau">Xem đơn hàng</a>
+        <h2 style="color: red"> Thông tin tài khoản  </h2>	<a href="doi-mat-khau">Đổi mật khẩu</a> <br> <a href="thong-tin-don-hang/{!!  Auth::User()->id !!}">Xem đơn hàng</a>
 						
      <h3 class="btn-success">   {!!$mess != "" ? $mess : "" !!}</h3>
     

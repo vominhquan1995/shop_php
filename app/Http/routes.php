@@ -63,6 +63,8 @@ Route::post('thong-tin',['as' => 'thong-tin','middleware' => 'auth','uses' => 'A
 Route::get('doi-mat-khau',['as' => 'changepass','middleware' => 'auth','uses' => 'Auth\AuthController@getChangePass']);
 Route::post('doi-mat-khau',['as' => 'changepass','middleware' => 'auth','uses' => 'Auth\AuthController@postchangePass']);
 
+Route::get('thong-tin-don-hang/{id}',['as' => 'thong-tin-don-hang','middleware' => 'auth','uses' => 'Auth\AuthController@getListOrdered']);
+
 Route::get('dang-xuat',['as' => 'dangxuat','uses' => 'Auth\AuthController@getLogout']);
 Route::get('san-pham',['as' => 'sanpham','uses' => 'PageController@category']);
 Route::get('dang-ky',['as' => 'dangky','uses' => 'PageController@getDangky']);
