@@ -5,6 +5,7 @@ use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Auth\Registrar;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use App\Http\Requests;
+
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
 use Auth,DB,Hash;
@@ -98,4 +99,33 @@ class AuthController extends Controller {
 		return view('backend.user.list',compact('dbUser'));
 
 	}
+	public function getIndex(){
+		$mess = "";
+		return view('backend.user.index',compact('mess'));
+	}
+
+		public function postIndex(RegisterRequest $request){
+		$user = Auth::User();
+		$user->firstname = $request->input('firstname');
+		$user->email = $request->input('email');
+		$user->phone = $request->input('phone');
+		$user->address = $request->input('address');
+		$user->save();
+		$mess = "cập nhật thành công";
+		return view('backend.user.index',compact('mess'));
+	}
+		public function getChangePass()
+		{
+				$mess = "";
+		return view('backend.user.changepass',compact('mess'));
+		}
+		public function postChangePass(RegisterRequest $request)
+		{
+		$user = Auth::User();
+		$user->password = Hash::make($request->input('newpass'));
+		$user->save();
+		$mess = "đổi mật khẩu thành công";
+		return view('backend.user.changepass',compact('mess'));
+
+		}
 }

@@ -56,6 +56,12 @@ Route::group(['prefix' =>'admin','middleware' => 'admin'],function(){
 		//Route::post('add',['as' => 'admin.cart.postadd','uses' => 'Auth\AuthController@postRegister']);
 	});
 });
+Route::get('thong-tin',['as' => 'thong-tin','middleware' => 'auth','uses' => 'Auth\AuthController@getIndex']);
+Route::post('thong-tin',['as' => 'thong-tin','middleware' => 'auth','uses' => 'Auth\AuthController@postIndex']);
+
+Route::get('doi-mat-khau',['as' => 'changepass','middleware' => 'auth','uses' => 'Auth\AuthController@getChangePass']);
+Route::post('doi-mat-khau',['as' => 'changepass','middleware' => 'auth','uses' => 'Auth\AuthController@postchangePass']);
+
 Route::get('dang-xuat',['as' => 'dangxuat','uses' => 'Auth\AuthController@getLogout']);
 Route::get('san-pham',['as' => 'sanpham','uses' => 'PageController@category']);
 Route::get('dang-ky',['as' => 'dangky','uses' => 'PageController@getDangky']);
@@ -80,6 +86,7 @@ Route::post('auth/register',['as' => 'auth.register','middleware' => 'admin','us
 Route::get('{alias}',['as' => 'chitietsanpham','uses' => 'PageController@chitietsanpham']);
 Route::get('danh-muc/{alias}',['as' => 'cateparent','uses' => 'PageController@cateparent']);
 Route::any('{all?}','PageController@index')->where('all','(.*)');
+
 
 /*
   get date
