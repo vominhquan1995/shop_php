@@ -39,6 +39,7 @@
             ->select('chitiethoadons.id_sanpham', 'products.*', 'hoadons.status')
             ->where('hoadons.status',1)
             ->groupBy('products.id','chitiethoadons.id_sanpham')
+            ->take(5)
             ->get(); ?>
               @foreach ($product_banchays as $product_banchay)
               <div data-id="{!! $product_banchay->id !!}"  class="product-item-mini"> 
