@@ -1,0 +1,98 @@
+<?php $__env->startSection('title','Giỏ hàng'); ?>
+<?php $__env->startSection('content'); ?>
+<div id="content">
+<section class="">
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<ul class="breadcrumb">
+				<li><a href="<?php echo url('/'); ?>">Trang chủ</a></li>
+				<li class="active">Giỏ hàng</li>
+			</ul>
+		</div>
+	</div>
+</div>
+</section>
+<section>
+<div class="container">
+	<div class="row">
+		
+		<div class="cart-table">
+		<form method="post" action="/cart">
+			<div class="table-responsive">
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th>Hình ảnh</th>
+						<th>Tên sản phẩm</th>
+						<th>Giá</th>
+						<th>Số lượng</th>
+						<th>Thành tiền</th>
+						<th>Xóa</th>
+					</tr>
+				</thead>
+				<tbody>
+				<?php $content = Cart::content(); 
+					$total = 0;
+					$total_sale = 0;
+				?>
+					<?php foreach($content as $row): ?>
+					<tr id="cart_<?php echo $row->rowid; ?>">
+						<td><img src="<?php echo asset('public/upload/'.$row->options->image); ?>" width="100"></td>
+						<td>
+							<a href="<?php echo url('/',[$row->options->alias]); ?>"><?php echo $row["name"]; ?></a>
+						</td>
+						<td>
+							<?php if($row->options->pricesale > 0): ?>
+							<?php echo number_format($row->options->pricesale,0,',','.') ?>đ
+							<?php else: ?>
+							<?php echo number_format($row["price"],0,',','.') ?>đ
+							<?php endif; ?>
+						</td>
+						<td><input type="number" class="item_cart_<?php echo $row->rowid; ?>" value="<?php echo $row->qty ?>" name="qty"><a href="javascript:void(0)" class="update_cart" data-id="<?php echo $row->rowid; ?>" data-qty="<?php echo $row->qty; ?>"><span class="btn btn-primary" style="margin:0;padding:1px; border-radius:0">Update</span></a></td>
+						<td>
+							<?php if($row->options->pricesale > 0): ?>
+							<?php 
+								echo number_format($row->options->pricesale * $row["qty"],0,',','.');
+								$total_sale+=($row->options->pricesale * $row["qty"]);
+							?>đ
+							<?php else: ?>
+							<?php 
+								echo number_format($row["qty"] * $row["price"],0,',','.');
+								$total+=($row["qty"] * $row["price"]);
+							 ?>đ
+							<?php endif; ?>
+						</td>
+						<td><a class="fa fa-trash-o item-remove" href="javascript:void(0)" data-id="<?php echo $row->rowid; ?>"></a></td>
+					</tr>
+					<?php endforeach; ?>
+					<tr>
+						<td colspan="6">
+							<div class="pull-right">
+								Tổng tiền :<span class="tong_cart"><?php  echo number_format($total_sale+$total,0,',','.') ?></span>đ
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="6">
+							<div class="pull-left">
+								<a class="comment-submit" href="<?php echo url('/'); ?>">Tiếp tục mua sắm</a>
+							</div>
+							<div class="pull-right">
+								<a class="comment-submit" href="<?php echo url('huy-gio-hang'); ?>">Hủy giỏ hàng</a>
+								<a class="comment-submit" href="<?php echo url('thanh-toan'); ?>">Thanh toán</a>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			</div>
+		</form>
+		</div>
+		
+	</div>
+</div>
+</section>
+</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('frontend.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

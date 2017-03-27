@@ -31,9 +31,9 @@
                         <td><?php echo $list["addreass"]; ?></td>
                         <td><?php echo $list["created_at"]; ?></td>
                         <td><?php echo $list["total_qty"]; ?></td>
-                        <td align="center">
+                        <td align="center" data-id="view<?php echo $list["id"]; ?>">
                             <?php if($list["status"] == 0): ?>
-                              <a href="javascript:void(0)" title="Hoàn thành dơn hàng ngay" data-id="<?php echo $list["id"]; ?>" class="update_orders hide_id_<?php echo $list['id']; ?>"><img src="<?php echo asset('public/upload/logoicon/select.png'); ?>"></a>
+                              <a href="javascript:void(0)" title="Hoàn thành dơn hàng ngay" onclick="changeStatus(<?php echo $list["id"]; ?>)"  class="update_orders hide_id_<?php echo $list['id']; ?>"><img src="<?php echo asset('public/upload/logoicon/select.png'); ?>"></a>
                               <span class="show_id_<?php echo $list['id']; ?>"></span>
                             <?php else: ?>
                               Đã hoàn thành
@@ -78,6 +78,24 @@
             </div><!-- /.col -->
           </div><!-- /.row -->
         </section>
+
+
+
+        <script>
+
+          function changeStatus(id){
+             $.post('<?php echo url("admin/cart/updatestatus"); ?>',{id : id},function(status){
+                  if(status == 'success'){
+                    var idJS = 'td[data-id="viewflag"]';
+                    idJS = idJS.replace('flag', id);
+                    $(idJS).html('Đã hoàn thành');
+                    alert('Hoàn thành đơn hàng thành công');
+                  
+                  }
+             })
+          }
+
+        </script>
     
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('backend.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
