@@ -87,16 +87,20 @@ class PageController extends Controller {
 		echo Cart::count();
 	}
 	public function thanhtoan(){
-		if(Auth::User()){
+		// if(Auth::User()){
 				return view('frontend.pages.sendorders');
-		}else{
-			return redirect()->route('dangnhap');
-		}
+		// }else{
+		// 	return redirect()->route('dangnhap');
+		// }
 		 
 	}
 	public function postthanhtoan(CartRequest $request){
 		$hoadon = new Hoadon;
-		$hoadon->user_id=Auth::User()->id;
+		if(Auth::User()){
+			$hoadon->user_id=Auth::User()->id;
+		}else{
+			$hoadon->user_id=null;
+		}
 		$hoadon->name = $request->txtName;
 		$hoadon->email = $request->txtEmail;
 		$hoadon->phone = $request->txtPhone;
@@ -135,9 +139,10 @@ class PageController extends Controller {
 		// 	$msg->to($_POST['txtEmail'])->subject('Cảm ơn bạn đã đặt hàng!Chúng tôi sẽ liên hệ với bạn thời gian sớm nhất');
 		// });
 		Cart::destroy();
-		echo "<script>alert('Đơn hàng của bạn đã được gửi')
-		window.location ='".url('/')."';
-		</script>";
+		// echo "<script>alert('Đơn hàng của bạn đã được gửi')
+		// window.location ='".url('/')."';
+		// </script>";
+		return redirect()->route('trangchu')->with(['flash_level' => 'success','flash_message' =>'Đơn hàng đã đặt thành công']);
 	}
 	public function danhgia(){
 		$name = htmlentities(htmlspecialchars($_GET['name']));

@@ -50,7 +50,13 @@
 							<?php echo number_format($row["price"],0,',','.') ?>đ
 							@endif
 						</td>
-						<td><input type="number" class="item_cart_{!! $row->rowid !!}" value="<?php echo $row->qty ?>" name="qty"><a href="javascript:void(0)" class="update_cart" data-id="{!! $row->rowid !!}" data-qty="{!! $row->qty !!}"><span class="btn btn-primary" style="margin:0;padding:1px; border-radius:0">Update</span></a></td>
+						<!-- <td>
+							<input type="number" id="quality_cart" data-id="{!! $row->rowid !!}" value="<?php echo $row->qty ?>" name="qty" min="1">
+						</td> -->
+						<td><input type="number" class="item_cart_{!! $row->rowid !!}" value="<?php echo $row->qty ?>" name="qty">
+							<a href="javascript:void(0)" class="update_cart" data-id="{!! $row->rowid !!}" data-qty="{!! $row->qty !!}">
+							<span class="btn btn-primary" style="margin:0;padding:1px; border-radius:0">Update</span></a>
+						</td>
 						<td>
 							@if($row->options->pricesale > 0)
 							<?php 
