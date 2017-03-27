@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th3 24, 2017 lúc 08:23 CH
+-- Thời gian đã tạo: Th3 27, 2017 lúc 03:28 SA
 -- Phiên bản máy phục vụ: 10.1.21-MariaDB
 -- Phiên bản PHP: 5.6.30
 
@@ -119,6 +119,7 @@ CREATE TABLE `danhgias` (
 
 CREATE TABLE `hoadons` (
   `id` int(10) UNSIGNED NOT NULL,
+  `user_id` int(10) UNSIGNED NOT NULL,
   `name` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `phone` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
@@ -303,7 +304,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `email`, `firstname`, `phone`, `address`, `level`, `remember_token`, `created_at`, `updated_at`) VALUES
-(2, 'admin', '$2y$10$50lyn89bon8ChpuU90pvReDqMXEcweiwvr.nawCxpzsJbiKujSDUu', 'admin@yopmai.com', '', '', '', 1, 'VBHZpS3zptvhsUKIQSWBTR81vMwHlf5SALrwbHNfmjLuIxbCrL8wQRtLFcmw', '2016-02-04 01:54:02', '2016-02-04 03:21:27');
+(2, 'admin', '$2y$10$50lyn89bon8ChpuU90pvReDqMXEcweiwvr.nawCxpzsJbiKujSDUu', 'admin@yopmai.com', '', '', '', 1, 'VBHZpS3zptvhsUKIQSWBTR81vMwHlf5SALrwbHNfmjLuIxbCrL8wQRtLFcmw', '2016-02-04 01:54:02', '2016-02-04 03:21:27'),
+(40, 'test', '$2y$10$p51TqkN4fLtlRnvtgJerOe.8iRAm/sWoAHKcS.0GAz48/d/0FkrB2', 'test@gmail.com', 'aaa', '123', 'aaa', 2, 'p0NOmig1q8NVbJek4tnfJs5bODitjkls1z0Anl3zKR1RG27A3tAu15XiXf6H', '2017-03-24 23:57:29', '2017-03-26 17:41:34');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -341,7 +343,8 @@ ALTER TABLE `danhgias`
 -- Chỉ mục cho bảng `hoadons`
 --
 ALTER TABLE `hoadons`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `hoa_don_id_foreign` (`user_id`);
 
 --
 -- Chỉ mục cho bảng `password_resets`
@@ -393,22 +396,22 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT cho bảng `chitiethoadons`
 --
 ALTER TABLE `chitiethoadons`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 --
 -- AUTO_INCREMENT cho bảng `contacts`
 --
 ALTER TABLE `contacts`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT cho bảng `danhgias`
 --
 ALTER TABLE `danhgias`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT cho bảng `hoadons`
 --
 ALTER TABLE `hoadons`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 --
 -- AUTO_INCREMENT cho bảng `products`
 --
@@ -428,7 +431,7 @@ ALTER TABLE `tintucs`
 -- AUTO_INCREMENT cho bảng `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 --
 -- Các ràng buộc cho các bảng đã đổ
 --
@@ -445,6 +448,12 @@ ALTER TABLE `chitiethoadons`
 --
 ALTER TABLE `danhgias`
   ADD CONSTRAINT `danhgias_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE;
+
+--
+-- Các ràng buộc cho bảng `hoadons`
+--
+ALTER TABLE `hoadons`
+  ADD CONSTRAINT `hoa_don_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
 --
 -- Các ràng buộc cho bảng `products`
