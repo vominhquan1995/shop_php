@@ -6,19 +6,20 @@
     <div class="main">
       <div class="wrap clearfix">
         <div class="row">
+
+          @if(!Auth::User())
+           <div class="form-group" style="font-size:25px; margin:5px;"> Bạn đang mua hàng ở chế độ không cần đăng nhập. Vui lòng điền thông tin cần thiết hoặc
+            <a href="{!! url('/dang-ky') !!}">Đăng ký tài khoản mua hàng</a> hay 
+                <a href="{!! url('/dang-nhap')!!}">Đăng nhập </a> 
+           </div>          
+          @endif
+        
           <div class="col-md-4 col-sm-6">
             <div class="form-group m0">
               <h2>
                 <label class="control-label">THÔNG TIN MUA HÀNG</label>
               </h2>
-            </div>
-            @if(Auth::User() == false)
-                <div class="form-group"> <a href="{!! url('/dang-ky') !!}">Đăng ký tài khoản mua hàng</a> | 
-                <a href="{!! url('/dang-nhap')!!}">Đăng nhập </a> </div>
-            
-            @endif
-            
-            <hr class="divider">
+            </div>            
             <div class="form-group">
               <input name="txtEmail" class="form-control txtEmail" value="{!! Auth::User() ? Auth::User()->email : old('txtEmail') !!}" placeholder="Vui lòng nhập Email">
               <div class="help-block with-errors"><?php echo $errors->first('txtEmail'); ?></div>
