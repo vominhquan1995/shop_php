@@ -22,7 +22,7 @@
             <form accept-charset="UTF-8" action="" id="customer_register" method="post">
               <input type="hidden" name="_token" value="{{ csrf_token() }}">
               <h3 class="form-heading">Đăng nhập tài khoản</h3>
-              <p class="form-description">Nếu bạn chưa có tài khoản, xin vui lòng chuyển qua trang đăng ký.</p>
+              <p class="form-description">Nếu bạn chưa có tài khoản, xin vui lòng chuyển qua trang <a href="{!! url('dang-ky') !!}">Đăng ký</a></p>
               <div class="row">
                 <div class="col-md-3">
                   <p class="text-right">Username <span>*</span></p>
@@ -42,7 +42,6 @@
               <div class="row">
                 <div class="col-md-3"> </div>
                 <div class="col-md-8">
-                  <p><a href="{!! url('dang-ky') !!}">Đăng ký</a></p>
                   <button class="comment-submit">Đăng nhập</button>
                 </div>
               </div>

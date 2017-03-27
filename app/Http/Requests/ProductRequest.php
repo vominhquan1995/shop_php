@@ -22,7 +22,7 @@ class ProductRequest extends Request {
 	public function rules()
 	{
 		return [
-			'parentid' 			=>'numeric',
+			'parentid' 			=>'numeric|required',
 			'txtten' 			=> 'required|unique:products,name',
 			'txtgia' 			=> 'required|numeric',
 			'txtgiasale' 		=> 'numeric',

@@ -22,7 +22,7 @@
             <form role="form" accept-charset="UTF-8" action="" method="post">
               <h3 class="form-heading">Đăng ký tài khoản</h3>
               <input type="hidden" name="_token" value="{!! csrf_token() !!}" />
-              <p class="form-description">Nếu bạn có một tài khoản, xin vui lòng chuyển qua trang đăng nhập.</p>
+              <p class="form-description">Nếu bạn có một tài khoản, xin vui lòng chuyển qua trang  <a href="{!! url('dang-nhap') !!}">Đăng nhập </a></p>
               <div class="row">
                 <div class="col-md-3">
                   <p class="text-right">Username <span>*</span></p>

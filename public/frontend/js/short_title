@@ -1,0 +1,22 @@
+$(document).ready(function() {
+    $ps = $('.escape-text');
+
+
+    $ps.each(function(i, el) {
+        $(el).data('full-text', el.innerHTML);
+
+        strip(el);
+    });
+
+    $ps.on('mouseover', function() {
+        $(this).text($(this).data('full-text'));
+    }).on('mouseout', function() {
+        $(this).text(strip(this));
+    })
+
+});
+
+var length = 100;
+var strip = function(el) {
+    el.innerHTML = el.innerHTML.substr(0, length) + '...';
+}

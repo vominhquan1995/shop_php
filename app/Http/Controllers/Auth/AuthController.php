@@ -81,9 +81,7 @@ class AuthController extends Controller {
 			}
 			return redirect('/');
 		}else{
-			echo "<pre>";
-				print_r($auth);
-			echo "</pre>";
+			return redirect('dang-nhap');
 		};
 	}
 

@@ -9,6 +9,7 @@ use App\Product;
 use App\ProductImage;
 use App\Danhgia;
 use App\Http\Requests\ProductRequest;
+use App\Http\Requests\ProductEditRequest;
 use Input,File;
 use Request;
 use DB,Auth;
@@ -72,7 +73,7 @@ class ProductContoller extends Controller {
 		$product_img = Product::findOrFail($id)->pimages()->get()->toArray();
 		return view('backend.product.edit',compact('category','product','product_img'));
 	}
-	public function postEdit($id,Request $request){
+	public function postEdit($id,ProductEditRequest $request){
 		$product = Product::find($id);
 		$img_current = 'public/upload/'.Request::input('img_current');
 		$product->name = Request::input('txtten');
@@ -84,7 +85,7 @@ class ProductContoller extends Controller {
 		$product->keywork = Request::input('txtkeyword');
 		$product->discription = Request::input('txtmota');
 		$product->user_id = Auth::user()->id;
-		$product->cate_id = Request::input('parentid');
+		$product->cate_id = $request->parentid;
 		if(!empty(Request::file('fileimages'))){
 			$file_name = Request::file('fileimages')->getClientOriginalName();
 			$product->image = $file_name;
