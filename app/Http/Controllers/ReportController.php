@@ -27,6 +27,7 @@ class ReportController extends Controller {
                 $from = date('Y-m-d',$fromDate); 
                 $to = date('Y-m-d', $toDate);
                 $data = Hoadon::select(DB::raw('YEAR(created_at) as Year,MONTH(created_at) as Month,DAY(created_at) as Day,count(*) as Quantity'))
+				->where('status',1)
                 ->whereBetween('created_at', array($from, $to))              
                 ->groupBy(DB::raw('CAST(created_at AS DATE)'))
                 ->get();
