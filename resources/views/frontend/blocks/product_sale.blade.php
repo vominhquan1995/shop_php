@@ -14,7 +14,8 @@
                             <img class="img-responsive" src="{!! asset('public/upload/'.$product_sale->image) !!}"> 
                           </a> 
                         </div>
-                      <a class="product-item-name" href="{!! url('/'.$product_sale->alias) !!}">{!! substr($product_sale->name,0,20) !!}</a>
+                          <a class="product-item-name" href="{!! url('/'.$product_sale->alias) !!}">{!! substr($product_sale->name,0,20) !!}...</a>
+                      
                       <div>
                         <p class="product-item-price"><?php echo number_format($product_sale->price,0,',','.') ?>đ </p>
                         <span class="product-item-price-sale"> <?php echo number_format($product_sale->pricesale,0,',','.') ?>đ </span> 

@@ -11,7 +11,7 @@
                   <div class="product-item">
                     <div class="product-item-image"> <a href="{!! url('/'.$product_new->alias) !!}"> 
                     <img class="img-responsive" src="{!! asset('public/upload/'.$product_new->image) !!}" > </a> </div>
-                    <a class="product-item-name" href="{!! url('/'.$product_new->alias) !!}">{!! substr($product_new->name,0,20); !!}</a>
+                    <a class="product-item-name" href="{!! url('/'.$product_new->alias) !!}">{!! substr($product_new->name,0,20); !!}...</a>
                     <div >
                         @if($product_new->pricesale > 0)
                         <p class="product-item-price"> <?php echo number_format($product_new->price,0,',','.') ?>đ</p>

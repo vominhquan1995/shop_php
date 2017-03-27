@@ -45,7 +45,7 @@
               <div data-id="{!! $product_banchay->id !!}"  class="product-item-mini"> 
                 <a href="{!! url('/'.$product_banchay->alias) !!}" > 
                   <img class="pim-image"src="{!! asset('public/upload/'.$product_banchay->image) !!}">
-                  <h3 class="pim-name"  >{!! substr($product_banchay->name,0,15) !!}</h3>
+                  <h3 class="pim-name"  >{!! substr($product_banchay->name,0,15)!!}...</h3>
                   <p class="pim-price">
                     <?php 
                     if(number_format($product_banchay->pricesale,0,',','.')==0)
