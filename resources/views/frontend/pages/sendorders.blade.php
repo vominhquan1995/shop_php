@@ -12,25 +12,29 @@
                 <label class="control-label">THÔNG TIN MUA HÀNG</label>
               </h2>
             </div>
-            <div class="form-group"> <a href="{!! url('/dang-ky') !!}">Đăng ký tài khoản mua hàng</a> | 
-              <a href="{!! url('/dang-nhap')!!}">Đăng nhập </a> </div>
+            @if(Auth::User() == false)
+                <div class="form-group"> <a href="{!! url('/dang-ky') !!}">Đăng ký tài khoản mua hàng</a> | 
+                <a href="{!! url('/dang-nhap')!!}">Đăng nhập </a> </div>
+            
+            @endif
+            
             <hr class="divider">
             <div class="form-group">
-              <input name="txtEmail" class="form-control txtEmail" value="{!! old('txtEmail') !!}" placeholder="Vui lòng nhập Email">
+              <input name="txtEmail" class="form-control txtEmail" value="{!! Auth::User() ? Auth::User()->email : old('txtEmail') !!}" placeholder="Vui lòng nhập Email">
               <div class="help-block with-errors"><?php echo $errors->first('txtEmail'); ?></div>
             </div>
             <div class="billing">
               <div bind-show="billing_expand">
                 <div class="form-group">
-                  <input name="txtName" class="form-control txtName" value="{!! old('txtName') !!}"  placeholder="Họ và tên">
+                  <input name="txtName" class="form-control txtName" value="{!! Auth::User() ? Auth::User()->firstname :  old('txtName') !!}"  placeholder="Họ và tên">
                   <div class="help-block with-errors"><?php echo $errors->first('txtName'); ?></div>
                 </div>
                 <div class="form-group">
-                  <input  name="txtPhone" class="form-control txtPhone" value="{!! old('txtPhone') !!}" placeholder="Số điện thoại">
+                  <input  name="txtPhone" class="form-control txtPhone" value="{!! Auth::User() ? Auth::User()->phone :  old('txtPhone') !!}" placeholder="Số điện thoại">
                   <div class="help-block with-errors"><?php echo $errors->first('txtPhone'); ?></div>
                 </div>
                 <div class="form-group">
-                  <input name="txtAddress" class="form-control" value="{!! old('txtAddress') !!}" placeholder="Địa chỉ">
+                  <input name="txtAddress" class="form-control" value="{!! Auth::User() ? Auth::User()->address :  old('txtAddress') !!}" placeholder="Địa chỉ">
                   <div class="help-block with-errors"><?php echo $errors->first('txtAddress'); ?></div>
                 </div>
                 <hr class="divider">
