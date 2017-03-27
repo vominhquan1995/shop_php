@@ -88,9 +88,7 @@ class PageController extends Controller {
 	}
 	public function thanhtoan(){
 		if(Auth::User()){
-			if(Auth::User()->level == 2){
 				return view('frontend.pages.sendorders');
-			}
 		}else{
 			return redirect()->route('dangnhap');
 		}

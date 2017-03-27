@@ -47,13 +47,13 @@
             <h3>Liên hệ</h3>
             <ul>
               <li><i class="fa fa-home"></i>
-                <p>80b Lê Duẩn - Hải Châu - Đà Nẵng</p>
+                <p>475 Điện Biên Phủ- Q. Bình Thạnh - TP Hồ Chí Minh</p>
               </li>
               <li><i class="fa fa-envelope"></i>
-                <p><a href="mailto:info@handmakes.com">info@handmakes.com</a></p>
+                <p><a href="mailto:info@handmakes.com">info@storewhat.com</a></p>
               </li>
               <li><i class="fa fa-phone"></i>
-                <p>01671234567</p>
+                <p>0123456789</p>
               </li>
             </ul>
           </div>
@@ -64,7 +64,7 @@
   <section class="footer-bottom">
     <div class="container">
       <div class="row">
-        <div class="col-md-6 col-sm-12 col-xs-12"><p>© 2016 - Handmakes. Phát triển bởi <a href="#">Nguyễn Bá Lộc && Hoàng Tý</a>.</p></div>
+        <div class="col-md-6 col-sm-12 col-xs-12"><p>© 2017 - Store What. Phát triển bởi <a href="#">Team QNT</a>.</p></div>
         <div class="col-md-6 col-sm-12 col-xs-12">
           <div class="footer-payments">
             <ul>
