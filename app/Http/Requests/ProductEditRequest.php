@@ -22,12 +22,12 @@ class ProductEditRequest extends Request {
 	public function rules()
 	{
 		return [
-			'parentid' 			=>'numeric|required'
+			'parentid' 			=>'required'
 		];
 	}
 	public function messages(){
 		return [
-			'parentid.numeric' => 'Vui lòng chọn danh mục'
+			'parentid.required' => 'Vui lòng chọn danh mục'
 		];
 	}
 
